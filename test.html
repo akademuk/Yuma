@@ -1,309 +1,420 @@
-<div class="enhanced">
-    <div class="wrapper">
-        <div class="enhanced__boxs">
-            <svg class="lines-overlay"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; overflow: visible;"></svg>
-            <div class="enhanced__boxs-tabs">
-                <div class="enhanced__boxs-tabs-item" data-zone="red">
-                    <div class="enhanced__boxs-tabs-item-img">
-                        <img src="image/advantages-text1.svg" alt="">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syringe Animation</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #fff;
+            font-family: 'Instrument Sans', sans-serif;
+            overflow-x: hidden;
+            padding: 50px 0;
+        }
+
+        .syringe-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            padding: 40px 20px;
+            min-height: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .syringe-container {
+            position: relative;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 300px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Central Image */
+        .syringe-image {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        .syringe-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 700px;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Text Blocks */
+        .info-block {
+            position: relative;
+            z-index: 3;
+            margin-bottom: 60px;
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+
+        .info-block--left {
+            text-align: left;
+            transform: translateX(-50px);
+            padding-right: 20px;
+        }
+
+        .info-block--right {
+            text-align: left;
+            transform: translateX(50px);
+            padding-left: 20px;
+        }
+
+        .info-block.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .syringe-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #EC6547;
+            /* Red accent color */
+        }
+
+        .plus-icon {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #EC6547;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            line-height: 1;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .plus-icon:hover {
+            background: #EC6547;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .info-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .info-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Detail Circles */
+        .details-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            justify-content: flex-start;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out 0.5s;
+        }
+
+        .details-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .detail-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #f0f0f0;
+            background: #fff;
+            position: relative;
+        }
+
+        .detail-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* SVG Lines */
+        .lines-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .connector-line {
+            fill: none;
+            stroke: #999;
+            stroke-width: 1;
+            stroke-dasharray: 4 4;
+            opacity: 0;
+        }
+
+        .connector-dot {
+            fill: #333;
+            opacity: 0;
+        }
+
+        /* Animation Classes */
+        .animate-lines .connector-line {
+            animation: drawLine 1.5s forwards ease-in-out;
+        }
+
+        .animate-lines .connector-dot {
+            animation: fadeIn 0.5s forwards 1.5s;
+        }
+
+        @keyframes drawLine {
+            from {
+                stroke-dashoffset: 1000;
+                opacity: 1;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .syringe-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .info-block--left,
+            .info-block--right {
+                text-align: center;
+                padding: 0;
+                transform: translateY(20px);
+            }
+
+            .info-header {
+                justify-content: center;
+            }
+
+            .details-container {
+                justify-content: center;
+            }
+
+            .lines-svg {
+                display: none;
+                /* Hide lines on mobile as layout changes */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="syringe-section">
+        <svg class="lines-svg" id="lines-svg">
+            <!-- Lines will be generated by JS -->
+        </svg>
+
+        <div class="syringe-container">
+            <!-- Left Column -->
+            <div class="col-left">
+                <div class="info-block info-block--left" id="block-1">
+                    <div class="info-header">
+                        <div class="plus-icon">+</div>
+                        <div class="info-title">Ergonomic<br>Phillex® Syringe</div>
                     </div>
-                    <span class="red-zone">Red Zone</span>
+                    <div class="info-text">
+                        Phillex® is supplied in modern syringes specifically designed for aesthetic practitioners. Wide
+                        finger "wings" provide a secure grip, while extended rests prevent slipping, reduce hand fatigue
+                        during multiple injections, and give better control over injection depth and speed.
+                    </div>
                 </div>
-                <div class="enhanced__boxs-tabs-item" data-zone="purple">
-                    <div class="enhanced__boxs-tabs-item-img">
-                        <img src="image/advantages-text2.svg" alt="">
+
+                <div class="info-block info-block--left" id="block-2">
+                    <div class="info-header">
+                        <div class="plus-icon">+</div>
+                        <div class="info-title">Reliability and quality<br>in every syringe</div>
                     </div>
-                    <span class="perple-zone">Perple Zone</span>
-                </div>
-                <div class="enhanced__boxs-tabs-item" data-zone="yellow">
-                    <div class="enhanced__boxs-tabs-item-img">
-                        <img src="image/advantages-text3.svg" alt="">
+                    <div class="info-text">
+                        Phillex® is produced with strict quality control. Syringes are made from medical-grade bioinert
+                        plastic, and needles come individually capped with sterility markings to ensure sharpness and
+                        integrity.
                     </div>
-                    <span class="yellow-zone">Yellow Zone</span>
                 </div>
             </div>
-            <div class="enhanced__boxs-face">
-                <div class="enhanced__boxs-face-img">
-                    <img src="image/face.png" width="550" height="550" alt="">
-                </div>
-                <svg width="240" height="347" viewBox="0 0 240 347" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M103.469 303.532L106.906 302.844H107.25L111.375 303.875L114.812 304.563L117.906 304.907H119.969L119.625 346.844H109.656L103.125 340.657L98.3125 335.5L94.5312 330.688L90.75 325.532L85.5938 317.969L83.1875 314.188L92.8125 307.657L96.25 305.938L98.6562 304.563L101.062 303.875L103.469 303.532Z"
-                        fill="#E7AC44" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M31.2812 182.875L31.9688 180.125L34.7188 180.812L42.2812 183.562L55.6875 188.719L57.75 190.781L63.9375 195.594L74.9375 204.531L83.1875 211.062L82.1562 218.969V226.875V233.75L83.1875 240.625L74.9375 238.219L67.7188 236.5L61.1875 234.781L50.5312 231.688L41.25 229.281L28.1875 226.188V218.969V212.094V206.594V202.812L28.875 198.344L29.5625 193.531L30.5938 187L31.2812 182.875Z"
-                        fill="#E7AC44" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M208.312 182.875L207.625 180.125L204.875 180.812L197.312 183.562L183.906 188.719L181.844 190.781L175.656 195.594L164.656 204.531L156.406 211.062L157.438 218.969V226.875V233.75L156.406 240.625L164.656 238.219L171.875 236.5L178.406 234.781L189.062 231.688L198.344 229.281L211.406 226.188V218.969V212.094V206.594V202.812L210.719 198.344L210.031 193.531L209 187L208.312 182.875Z"
-                        fill="#E7AC44" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M36.7812 228.25L28.1875 226.188L36.7812 236.5L46.0625 247.844L54.6562 259.188L64.625 272.25L69.7812 263.312L73.9062 255.406L79.4062 246.812L83.1875 240.625L80.0938 239.594L71.5 237.531L61.1875 235.125L52.9375 232.719L45.375 230.656L36.7812 228.25Z"
-                        fill="#E7AC44" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M202.812 228.25L211.406 226.188L202.812 236.5L193.531 247.844L184.938 259.188L174.969 272.25L169.812 263.312L165.688 255.406L160.188 246.812L156.406 240.625L159.5 239.594L168.094 237.531L178.406 235.125L186.656 232.719L194.219 230.656L202.812 228.25Z"
-                        fill="#E7AC44" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M17.875 176.344L6.1875 173.594V179.781V188.031L8.25 194.906L12.375 204.875L17.875 214.844L23.7188 221.719L27.8438 225.844V223.438V206.938L28.875 198L30.5938 185.969L31.625 179.781L17.875 176.344Z"
-                        fill="#E7AC44" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M221.375 176.344L232.719 172.906L233.062 180.125V188.375L231.344 195.25L227.219 205.219L221.719 215.188L215.875 222.062L211.406 225.844V223.438V207.281L210.719 198.344L209 186.312L207.625 180.125L221.375 176.344Z"
-                        fill="#E7AC44" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M113.094 158.469L106.219 159.844V160.188L110 164.312L115.156 170.5H119.281H119.969L123.75 171.188L130.625 162.594L133.719 159.844L119.969 157.781L113.094 158.469Z"
-                        fill="#E7AC44" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M89.0312 242.344L83.1875 240.625L69.7812 263.656L71.5 278.094H73.9062L75.625 279.125L79.75 280.5H86.9688L92.4688 279.812L97.2812 279.125L101.406 278.094L104.844 277.75L110.344 278.781H119.625V243.031H116.875L109.656 243.375H102.781H98.3125L93.5 243.031L89.0312 242.344Z"
-                        fill="url(#paint0_linear_237_2736)" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M150.562 242.344L156.406 240.625L169.812 263.656L168.094 278.094H165.688L163.969 279.125L159.844 280.5H152.625L147.125 279.812L142.312 279.125L138.188 278.094L134.75 277.75L129.25 278.781H119.969L119.625 243.031H122.719L129.938 243.375H136.812H141.281L146.094 243.031L150.562 242.344Z"
-                        fill="url(#paint1_linear_237_2736)" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M9.625 218.969L7.90625 212.438L0 217.938L2.40625 223.438L3.4375 225.5L3.78125 232.031L4.46875 234.438L5.5 236.844L7.5625 238.562H9.96875L12.375 238.219L13.4062 237.531L12.7188 233.406L11 226.875L9.625 218.969Z"
-                        fill="#EC6547" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M229.625 218.969L231.093 213.388C231.215 212.927 231.759 212.726 232.151 212.999L238.786 217.615C239.056 217.802 239.155 218.154 239.024 218.455L236.844 223.438L235.877 225.372C235.834 225.456 235.81 225.549 235.805 225.643L235.473 231.953C235.47 232.005 235.462 232.056 235.447 232.106L234.804 234.358C234.789 234.411 234.767 234.462 234.74 234.51L233.468 236.736C233.427 236.807 233.374 236.871 233.311 236.923L231.494 238.438C231.396 238.519 231.277 238.572 231.151 238.59L229.098 238.883C228.993 238.898 228.885 238.889 228.784 238.855L226.947 238.243C226.899 238.227 226.853 238.206 226.81 238.18L225.642 237.479C225.36 237.31 225.237 236.964 225.35 236.655L226.531 233.406L228.25 226.875L229.625 218.969Z"
-                        fill="#EC6547" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M16.8438 140.594L19.25 138.875L29.9062 160.531L33 172.906L31.625 179.781L20.9688 177.031L6.1875 172.906V166.375V159.156L7.90625 155.375L16.8438 140.594Z"
-                        fill="#EC6547" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M222.062 140.594L219.656 138.875L209 160.531L205.906 172.906L207.281 179.781L217.938 177.031L232.719 172.906V166.375V159.156L231 155.375L222.062 140.594Z"
-                        fill="#EC6547" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <g style="mix-blend-mode:multiply">
-                        <path
-                            d="M49.1562 39.1875L37.5068 65.5702C37.4817 65.6269 37.4688 65.6883 37.4688 65.7503C37.4688 65.9055 37.5493 66.0494 37.6816 66.1305L103.721 106.639C104.007 106.815 104.331 106.918 104.665 106.939L119.969 107.938L135.217 106.943C135.586 106.919 135.943 106.796 136.248 106.586L154.344 94.1875L177.031 81.4688L200.581 66.9517C201.464 66.4075 201.805 65.2923 201.379 64.3471L192.5 44.6875L179.099 20.9015C178.873 20.4996 178.518 20.1853 178.092 20.0086L164.656 14.4375L120.255 0.201885C119.845 0.0705865 119.405 0.0705858 118.995 0.201884L74.5938 14.4375L60.8464 19.6746C60.4002 19.8446 60.0268 20.1641 59.7899 20.5787L49.1562 39.1875Z"
-                            fill="#EC6547" />
-                    </g>
-                    <path
-                        d="M103.932 134.459L96.6543 136.157C95.2944 136.474 94.67 138.052 95.4446 139.214L97.2812 141.969L100.719 148.844L103.469 155.375L105.207 158.355C105.612 159.049 106.393 159.434 107.189 159.332L119.036 157.813C119.199 157.792 119.364 157.791 119.527 157.81L132.322 159.334C133.16 159.433 133.97 158.997 134.348 158.242L136.812 153.312L141.625 144.375L145.062 138.531C145.578 137.5 144.959 136.262 143.825 136.056L134.927 134.439C134.809 134.417 134.69 134.406 134.57 134.406H119.281H104.386C104.234 134.406 104.081 134.424 103.932 134.459Z"
-                        fill="#EC6547" style="mix-blend-mode:darken" />
-                    <path
-                        d="M136.469 303.532L133.031 302.844H132.688L128.562 303.875L125.125 304.563L122.031 304.907H119.969L120.312 346.844H130.281L136.812 340.657L141.625 335.5L145.406 330.688L149.188 325.532L154.344 317.969L156.75 314.188L147.125 307.657L143.688 305.938L141.281 304.563L138.875 303.875L136.469 303.532Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M94.1875 201.438L83.1875 210.719L82.5 214.844L82.1562 222.062V230.656L83.1875 240.625L92.125 243.031L96.5938 243.375L119.281 242.688L99 242.344L94.875 240.281L92.4688 238.219L91.7812 235.812V233.406V231.688L92.125 229.969L93.5 228.594L95.2188 226.531V221.719V216.562L94.875 210.719V205.562L94.1875 201.438Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M145.062 201.438L156.406 211.062L157.094 216.219L157.438 222.062V231L156.406 240.625L150.562 242.344L145.75 243.031L135.094 243.375L119.969 243.031V242.688L140.25 242.344L144.375 240.281L146.094 238.219L147.469 235.812V233.406V231.688L147.125 229.969L145.75 228.594L144.031 226.531V221.719V216.562L144.375 210.719V205.562L145.062 201.438Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path d="M69.7812 263.657L64.9688 272.25L71.5 279.469V276.375L69.7812 263.657Z" fill="#AE6C9E"
-                        fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path d="M170.156 263.657L174.969 272.25L168.438 279.469V275.344L170.156 263.657Z" fill="#AE6C9E"
-                        fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M115.156 172.906V170.844V170.5H119.625L123.406 170.844L124.094 177.031L130.281 197.656L119.969 190.438L110.344 196.281L111.031 194.562L112.406 189.062L114.125 182.188L115.156 177.031V172.906Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M39.1875 182.188L31.9688 180.125L33 171.531H36.4375H39.1875L42.2812 170.844L45.0312 169.469L47.7812 168.781H50.1875L55.3438 169.469H65.6562L72.1875 168.781L74.5938 167.75L80.7812 173.594L88.6875 180.125L80.7812 184.594L76.3125 186.656L71.5 188.031L67.0312 188.719H60.1562H55.3438L53.625 188.031L45.0312 184.594L39.1875 182.188Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M199.719 182.188L206.938 180.125L205.906 171.531H202.469H199.719L196.625 170.844L193.875 169.469L191.125 168.781H188.719L183.562 169.469H173.25L166.719 168.781L164.312 167.75L158.125 173.594L150.219 180.125L158.125 184.594L162.594 186.656L167.406 188.031L171.875 188.719H178.75H183.562L185.281 188.031L193.875 184.594L199.719 182.188Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M103.812 106.906L84.9062 94.875L86.625 118.938L93.8438 136.469L104.844 134.406H119.625H135.438L146.094 136.469L152.969 118.938L154 94.5312L135.438 106.906L119.625 107.938L103.812 106.906Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M125.125 304.563L119.625 304.907L119.953 268.16C119.963 267.071 120.538 266.065 121.472 265.505C121.616 265.419 121.765 265.344 121.92 265.282L123.406 264.688L124.567 264.107C125.166 263.808 125.801 263.59 126.457 263.459C126.943 263.362 127.437 263.313 127.933 263.313H128.047C128.618 263.313 129.189 263.369 129.749 263.482L130.625 263.657L135.438 264.688L139.906 265.719L148.5 269.5L155.375 272.938L162.594 275L166.375 275.344L168.438 276.032V278.438H168.094L166.375 279.469L162.938 281.188L160.531 283.594L156.406 288.75L152.281 292.875L148.5 295.625L144.375 298.032L138.531 300.438L132 302.844L125.125 304.563Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <path
-                        d="M114.469 304.563L119.969 304.907L119.641 268.16C119.631 267.071 119.055 266.065 118.121 265.505C117.978 265.419 117.828 265.344 117.673 265.282L116.188 264.688L115.026 264.107C114.428 263.808 113.793 263.59 113.137 263.459C112.651 263.362 112.157 263.313 111.661 263.313H111.547C110.975 263.313 110.405 263.369 109.845 263.482L108.969 263.657L104.156 264.688L101.201 265.37C100.194 265.602 99.2115 265.929 98.2659 266.345L91.0938 269.5L84.2188 272.938L77 275L73.2188 275.344L71.1562 276.032V278.438H71.5L73.2188 279.469L76.6562 281.188L79.0625 283.594L83.1875 288.75L87.3125 292.875L91.0938 295.625L95.2188 298.032L101.062 300.438L107.594 302.844L114.469 304.563Z"
-                        fill="#AE6C9E" fill-opacity="0.75" style="mix-blend-mode:multiply" />
-                    <defs>
-                        <linearGradient id="paint0_linear_237_2736" x1="95.9063" y1="250.594" x2="100.719" y2="269.844"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#EC6547" />
-                            <stop offset="1" stop-color="#EC6547" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint1_linear_237_2736" x1="143" y1="246.469" x2="139.906" y2="272.25"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#EC6547" />
-                            <stop offset="1" stop-color="#EC6547" stop-opacity="0" />
-                        </linearGradient>
-                    </defs>
-                </svg>
 
+            <!-- Center Image -->
+            <div class="syringe-image">
+                <!-- Placeholder for Syringe -->
+                <img src="https://placehold.co/150x600/transparent/png?text=Syringe" alt="Phillex Syringe"
+                    id="main-syringe">
             </div>
-        </div>
-        <div class="enhanced__content">
 
+            <!-- Right Column -->
+            <div class="col-right">
+                <div class="info-block info-block--right" id="block-3">
+                    <div class="info-header">
+                        <div class="plus-icon">+</div>
+                        <div class="info-title">Ease and control<br>of injection</div>
+                    </div>
+                    <div class="info-text">
+                        The thixotropic gel and improved instruments make Phillex® technically simple to use. The filler
+                        flows easily through the needle with minimal pressure, allowing one-handed operation.
+                    </div>
+                </div>
+
+                <div class="details-container">
+                    <div class="detail-circle">
+                        <img src="https://placehold.co/100x100/eee/999?text=Detail+1" alt="Detail 1">
+                    </div>
+                    <div class="detail-circle">
+                        <img src="https://placehold.co/100x100/eee/999?text=Detail+2" alt="Detail 2">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<style>
-    .enhanced__boxs {
-        position: relative;
-    }
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const section = document.querySelector('.syringe-section');
+            const svg = document.getElementById('lines-svg');
+            const syringe = document.getElementById('main-syringe');
 
-    .enhanced__boxs-tabs-item {
-        transition: all 0.3s;
-        position: relative;
-        z-index: 2;
-        border-bottom: 1px dashed transparent;
-        padding-bottom: 5px;
-        /* Add some space */
-    }
+            // Configuration for connections
+            // source: ID of the text block
+            // target: % position on the syringe image (x, y) relative to the image container
+            // anchor: where on the text block the line starts ('right' or 'left')
+            const connections = [
+                { source: 'block-1', targetY: 20, anchor: 'right' }, // Top Left -> Top Syringe
+                { source: 'block-2', targetY: 80, anchor: 'right' }, // Bottom Left -> Bottom Syringe
+                { source: 'block-3', targetY: 40, anchor: 'left' }   // Top Right -> Middle Syringe
+            ];
 
-    .enhanced__boxs-tabs-item.active {
-        opacity: 1;
-        border-bottom-color: #000;
-    }
+            function drawLines() {
+                svg.innerHTML = '';
+                const syringeRect = syringe.getBoundingClientRect();
+                const svgRect = svg.getBoundingClientRect();
 
-    /* Make zones clickable */
-    .enhanced__boxs-face svg path {
-        transition: opacity 0.3s;
-    }
+                connections.forEach(conn => {
+                    const block = document.getElementById(conn.source);
+                    const blockRect = block.getBoundingClientRect();
 
-    .enhanced__boxs-face svg path[data-zone] {
-        cursor: pointer;
-    }
+                    // Calculate Start Point (Text Block)
+                    let startX, startY;
+                    if (conn.anchor === 'right') {
+                        startX = blockRect.right - svgRect.left + 10; // Offset slightly
+                        startY = blockRect.top + 30 - svgRect.top; // Approx header height
+                    } else {
+                        startX = blockRect.left - svgRect.left - 10;
+                        startY = blockRect.top + 30 - svgRect.top;
+                    }
 
-    .enhanced__boxs-face svg path[data-zone]:hover {
-        opacity: 0.8;
-    }
+                    // Calculate End Point (Syringe)
+                    // We assume the syringe is centered in its column
+                    const endX = (syringeRect.left + syringeRect.width / 2) - svgRect.left;
+                    const endY = (syringeRect.top + (syringeRect.height * (conn.targetY / 100))) - svgRect.top;
 
-    .connection-line {
-        stroke: #000;
-        stroke-width: 1.5;
-        stroke-dasharray: 5, 5;
-        fill: none;
-        animation: dash 20s linear infinite;
-    }
+                    // Create Path
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
-    @keyframes dash {
-        to {
-            stroke-dashoffset: -1000;
-        }
-    }
-</style>
+                    // Simple straight line or curved? Screenshot shows straight dotted lines
+                    const d = `M ${startX} ${startY} L ${endX} ${endY}`;
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const faceSvg = document.querySelector('.enhanced__boxs-face svg');
-        if (!faceSvg) return;
+                    path.setAttribute('d', d);
+                    path.setAttribute('class', 'connector-line');
+                    path.setAttribute('stroke-dasharray', '1000'); // Initial large dash for animation
+                    path.setAttribute('stroke-dashoffset', '1000');
 
-        const paths = faceSvg.querySelectorAll('path');
-        const overlay = document.querySelector('.lines-overlay');
-        const tabs = document.querySelectorAll('.enhanced__boxs-tabs-item');
-        const boxsContainer = document.querySelector('.enhanced__boxs');
+                    // Create Dot/Arrow at end
+                    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    dot.setAttribute('cx', endX);
+                    dot.setAttribute('cy', endY);
+                    dot.setAttribute('r', '3');
+                    dot.setAttribute('class', 'connector-dot');
 
-        // Color mapping
-        const zoneColors = {
-            '#EC6547': 'red',
-            '#AE6C9E': 'purple',
-            '#E7AC44': 'yellow'
-        };
-
-        // Helper to check color
-        function getZoneFromFill(fill) {
-            if (!fill) return null;
-            const lowerFill = fill.toLowerCase();
-            if (lowerFill.includes('#ec6547') || lowerFill.includes('paint0') || lowerFill.includes('paint1')) return 'red';
-            if (lowerFill.includes('#ae6c9e')) return 'purple';
-            if (lowerFill.includes('#e7ac44')) return 'yellow';
-            return null;
-        }
-
-        // Assign zones to paths
-        paths.forEach(path => {
-            const fill = path.getAttribute('fill');
-            const zone = getZoneFromFill(fill);
-            if (zone) {
-                path.setAttribute('data-zone', zone);
-
-                path.addEventListener('click', (e) => {
-                    handleZoneClick(zone, e);
+                    svg.appendChild(path);
+                    svg.appendChild(dot);
                 });
             }
-        });
 
-        // Add click listeners to tabs
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const zone = tab.dataset.zone;
-                handleZoneClick(zone);
-            });
-        });
-
-        function handleZoneClick(zone, event) {
-            // Update active state on tabs
-            tabs.forEach(t => {
-                if (t.dataset.zone === zone) {
-                    t.classList.add('active');
-                } else {
-                    t.classList.remove('active');
-                }
-            });
-
-            // Clear existing lines
-            overlay.innerHTML = '';
-
-            // Find corresponding tab
-            const tab = document.querySelector(`.enhanced__boxs-tabs-item[data-zone="${zone}"]`);
-            if (!tab) return;
-
-            // Find the visual content to start the line from (image or the tab itself)
-            const tabVisual = tab.querySelector('.enhanced__boxs-tabs-item-img img') ||
-                tab.querySelector('.enhanced__boxs-tabs-item-img') ||
-                tab;
-
-            // Get coordinates relative to the container
-            const containerRect = boxsContainer.getBoundingClientRect();
-            const visualRect = tabVisual.getBoundingClientRect();
-
-            // Start point: Right center of the visual element
-            const startX = visualRect.right - containerRect.left;
-            const startY = visualRect.top + visualRect.height / 2 - containerRect.top; let endX, endY;
-
-            if (event && event.type === 'click' && event.target.tagName === 'path') {
-                // If clicked on SVG, use the click coordinates
-                // We need to transform the click coordinates to the container's coordinate space
-                // event.clientX/Y are relative to the viewport
-                endX = event.clientX - containerRect.left;
-                endY = event.clientY - containerRect.top;
+            // Initial draw
+            // Wait for image to load for correct rects
+            if (syringe.complete) {
+                drawLines();
             } else {
-                // If clicked on tab or no event, use center of the zone
-                const zonePaths = faceSvg.querySelectorAll(`path[data-zone="${zone}"]`);
-                let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-
-                if (zonePaths.length === 0) return;
-
-                zonePaths.forEach(p => {
-                    const r = p.getBoundingClientRect();
-                    if (r.left < minX) minX = r.left;
-                    if (r.top < minY) minY = r.top;
-                    if (r.right > maxX) maxX = r.right;
-                    if (r.bottom > maxY) maxY = r.bottom;
-                });
-
-                const centerX = (minX + maxX) / 2;
-                const centerY = (minY + maxY) / 2;
-
-                endX = centerX - containerRect.left;
-                endY = centerY - containerRect.top;
+                syringe.onload = drawLines;
             }
 
-            // Draw line
-            drawLine(startX, startY, endX, endY);
-        }
+            window.addEventListener('resize', drawLines);
 
-        function drawLine(x1, y1, x2, y2) {
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            // Create a simple straight line
-            const d = `M ${x1} ${y1} L ${x2} ${y2}`;
+            // Animation Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Trigger animations
+                        document.querySelector('.syringe-image').classList.add('visible');
 
-            path.setAttribute('d', d);
-            path.setAttribute('class', 'connection-line');
-            overlay.appendChild(path);
+                        setTimeout(() => {
+                            document.getElementById('block-1').classList.add('visible');
+                        }, 300);
 
-            // Add circle at the end
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', x2);
-            circle.setAttribute('cy', y2);
-            circle.setAttribute('r', '3');
-            circle.setAttribute('fill', '#000');
-            overlay.appendChild(circle);
-        }
-    });
-</script>
+                        setTimeout(() => {
+                            document.getElementById('block-3').classList.add('visible');
+                        }, 600);
+
+                        setTimeout(() => {
+                            document.getElementById('block-2').classList.add('visible');
+                        }, 900);
+
+                        setTimeout(() => {
+                            document.querySelector('.details-container').classList.add('visible');
+                        }, 1200);
+
+                        // Animate lines after text appears
+                        setTimeout(() => {
+                            section.classList.add('animate-lines');
+                        }, 1500);
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>

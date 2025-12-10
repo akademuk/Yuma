@@ -1523,7 +1523,7 @@ select {
 
 .looking .wrapper {
   position: relative;
-  padding: 32px 16px 32px 32px;
+  padding: 32px 16px 32px 16px;
   border-radius: 24px;
   overflow: hidden;
   z-index: 1;
@@ -1568,7 +1568,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
+  gap: 11px;
   align-self: stretch;
   position: relative;
   z-index: 2;
@@ -2357,6 +2357,10 @@ select {
   letter-spacing: 0;
 }
 
+.enhanced__boxs-tabs-item span strong {
+  display: none;
+}
+
 .red-zone {
   background: #EC6547;
 }
@@ -2399,6 +2403,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: -10px;
 }
 
 .enhanced__content h2 {
@@ -2418,7 +2423,7 @@ select {
 .enhanced__content-box {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .enhanced__content-box p {
@@ -2454,15 +2459,263 @@ select {
 }
 
 .enhanced__content-box-image {
-  height: 100%;
   display: flex;
   justify-content: center;
 }
 
 .enhanced__content-box-image-grid img {
   width: calc(50% - 8px);
+  height: 47px;
+  object-fit: contain;
+}
+
+/* Central Image */
+.syringe-image {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.syringe-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 700px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+/* Text Blocks */
+.info-block {
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.info-block--left {
+  transform: translateX(-50px);
+}
+
+.info-block--right {
+  transform: translateX(50px);
+}
+
+.info-block.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.syringe-image.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Detail Circles */
+.details-container {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out 0.5s;
+}
+
+.details-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* SVG Lines */
+.lines-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  object-fit: none;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.connector-line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  opacity: 0;
+}
+
+.connector-dot {
+  fill: #000;
+  opacity: 0;
+}
+
+/* Animation Classes */
+.animate-lines .connector-line {
+  animation: drawLine 1.5s forwards ease-in-out;
+}
+
+.animate-lines .connector-dot {
+  animation: fadeIn 0.5s forwards 1.5s;
+}
+
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1000;
+    opacity: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.clinician-comfort {
+  padding: 64px 16px;
+  background: url(../image/hero-section.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right center;
+  position: relative;
+  overflow: hidden;
+}
+
+.clinician-comfort .wrapper {
+  display: flex;
+  max-width: 800px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  align-self: stretch;
+  margin: 0 auto;
+}
+
+.clinician-comfort__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.clinician-comfort__title h2 {
+  color: var(--colors-graphite-source);
+  text-align: center;
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.clinician-comfort__title p {
+  max-width: 776px;
+  flex: 1 0 0;
+  color: var(--colors-graphite-source);
+  text-align: center;
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+  display: inline;
+}
+
+.clinician-comfort__title p .element {
+  display: inline-flex;
+}
+
+.syringe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.col-left,
+.col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.syringe-image {
+  order: 3;
+  display: flex;
+  width: 288px;
+  height: 697.787px;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+}
+
+.info-header i {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-header i::before {
+  font-size: 24px;
+}
+
+.info-title {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 130%;
+  letter-spacing: 0;
+  display: inline;
+}
+
+.info-title br {
+  display: none;
+}
+
+.info-title span {
+  display: inline-flex;
+  color: var(--colors-red-medical-source);
+  margin-left: 5px;
+}
+
+.info-title .element {
+  color: var(--colors-graphite-source);
+}
+
+.info-text {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+  display: inline;
+}
+
+.info-text .element {
+  display: inline-flex;
+}
+
+.details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  align-self: stretch;
 }
 
 
@@ -2474,6 +2727,122 @@ select {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+  .syringe-container {
+    padding-right: 312px;
+  }
+
+  .syringe-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .syringe-container {
+    position: relative;
+  }
+
+  .enhanced__content-box-image-grid img {
+    object-fit: none;
+  }
+
+  .looking .wrapper {
+    position: relative;
+    padding: 32px 16px 32px 32px;
+  }
+
+  .looking__content {
+    gap: 20px;
+  }
+
+  .enhanced__content {
+    margin-top: 0;
+  }
+}
 
 
 
@@ -2940,6 +3309,73 @@ select {
 
   .enhanced__content h2 {
     font-size: 20px;
+  }
+
+  .clinician-comfort {
+    padding: 128px 52px;
+  }
+
+  .clinician-comfort .wrapper {
+    max-width: 1176px;
+    gap: 140px;
+  }
+
+  .syringe-container {
+    padding-right: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .col-left,
+  .col-right {
+    max-width: 376px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .syringe-section {
+    width: 100%;
+    max-width: 1167px;
+    position: relative;
+  }
+
+  .col-left {
+    gap: 154px;
+  }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .info-title {
+    font-size: 20px;
+  }
+
+  .info-title br {
+    display: flex;
+  }
+
+  .info-title span {
+    display: inline;
+  }
+
+  .syringe-image {
+    width: 512px;
+    height: 911px;
+    flex-shrink: 0;
+    aspect-ratio: 512/911;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .syringe-image img {
+    max-height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
 }
 

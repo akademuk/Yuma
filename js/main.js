@@ -404,3 +404,153 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.appendChild(circle);
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".syringe-section");
+  const svg = document.getElementById("lines-svg");
+  const syringe = document.getElementById("main-syringe");
+
+  // Configuration for connections
+  // source: ID of the text block
+  // target: % position on the syringe image (x, y) relative to the image container
+  // anchor: where on the text block the line starts ('right' or 'left')
+  const connections = [
+    { source: "block-1", targetY: 20, anchor: "right" }, // Top Left -> Top Syringe
+    { source: "block-2", targetY: 80, anchor: "right" }, // Bottom Left -> Bottom Syringe
+    { source: "block-3", targetY: 40, anchor: "left" }, // Top Right -> Middle Syringe
+  ];
+
+  function drawLines() {
+    if (!svg || !syringe) return;
+    svg.innerHTML = "";
+
+    // Disable on screens smaller than 1280px
+    if (window.innerWidth < 1280) return;
+
+    const syringeRect = syringe.getBoundingClientRect();
+    const svgRect = svg.getBoundingClientRect();
+
+    connections.forEach((conn) => {
+      const block = document.getElementById(conn.source);
+      if (!block) return;
+
+      // Find the title element to underline (h3, h4, or fallback to block itself)
+      const title =
+        block.querySelector(".info-header") ||
+        block.querySelector("h3") ||
+        block.querySelector("h4") ||
+        block.querySelector(".syringe-text__title") ||
+        block;
+      const titleRect = title.getBoundingClientRect();
+
+      // Calculate coordinates relative to SVG
+      // Y position for the underline (bottom of the title with slight offset)
+      const lineY = titleRect.bottom - svgRect.top + 5;
+
+      // Start Point: Beginning of the header (Left side)
+      const startX = titleRect.left - svgRect.left;
+
+      // Mid Point: End of the header (Right side) - creates the underline
+      const midX = titleRect.right - svgRect.left;
+
+      // End Point (Syringe)
+      // We assume the syringe is centered in its column
+      const endX = syringeRect.left + syringeRect.width / 2 - svgRect.left;
+      const endY =
+        syringeRect.top +
+        syringeRect.height * (conn.targetY / 100) -
+        svgRect.top;
+
+      // Create Path
+      const path = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "path"
+      );
+
+      // Determine drawing direction based on anchor
+      let d;
+      if (conn.anchor === "left") {
+        // For blocks on the right (anchor left): Draw underline Right -> Left, then connect to Syringe
+        d = `M ${midX} ${lineY} L ${startX} ${lineY} L ${endX} ${endY}`;
+      } else {
+        // For blocks on the left (anchor right): Draw underline Left -> Right, then connect to Syringe
+        d = `M ${startX} ${lineY} L ${midX} ${lineY} L ${endX} ${endY}`;
+      }
+
+      path.setAttribute("d", d);
+      path.setAttribute("class", "connector-line");
+      path.setAttribute("stroke-dasharray", "1000"); // Initial large dash for animation
+      path.setAttribute("stroke-dashoffset", "1000");
+
+      // Create Dot/Arrow at end
+      const dot = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+      );
+      dot.setAttribute("cx", endX);
+      dot.setAttribute("cy", endY);
+      dot.setAttribute("r", "3");
+      dot.setAttribute("class", "connector-dot");
+
+      svg.appendChild(path);
+      svg.appendChild(dot);
+    });
+  }
+
+  // Initial draw
+  // Wait for image to load for correct rects
+  if (syringe && syringe.complete) {
+    drawLines();
+  } else if (syringe) {
+    syringe.onload = drawLines;
+  }
+
+  window.addEventListener("resize", drawLines);
+
+  // Animation Observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Trigger animations
+          const img = document.querySelector(".syringe-image");
+          if (img) img.classList.add("visible");
+
+          setTimeout(() => {
+            const b1 = document.getElementById("block-1");
+            if (b1) b1.classList.add("visible");
+          }, 300);
+
+          setTimeout(() => {
+            const b3 = document.getElementById("block-3");
+            if (b3) b3.classList.add("visible");
+          }, 600);
+
+          setTimeout(() => {
+            const b2 = document.getElementById("block-2");
+            if (b2) b2.classList.add("visible");
+          }, 900);
+
+          setTimeout(() => {
+            const details = document.querySelector(".details-container");
+            if (details) details.classList.add("visible");
+          }, 1200);
+
+          // Animate lines after text appears
+          setTimeout(() => {
+            if (section && window.innerWidth >= 1280) {
+              section.classList.add("animate-lines");
+            }
+          }, 1500);
+
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  if (section) {
+    observer.observe(section);
+  }
+});
