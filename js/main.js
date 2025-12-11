@@ -553,4 +553,51 @@ document.addEventListener("DOMContentLoaded", () => {
   if (section) {
     observer.observe(section);
   }
+
+  // Section Paralax Swiper Logic
+  const paralaxSwiperSelector = ".section-paralax-swiper";
+  let paralaxSwiper = null;
+
+  function initParallaxSwiper() {
+    const screenWidth = window.innerWidth;
+    const swiperElement = document.querySelector(paralaxSwiperSelector);
+
+    if (!swiperElement) return;
+
+    if (screenWidth < 1280 && !paralaxSwiper) {
+      paralaxSwiper = new Swiper(paralaxSwiperSelector, {
+        slidesPerView: "auto",
+        spaceBetween: 16,
+        loop: false,
+        observer: true, // Fix for hidden tabs initialization
+        observeParents: true, // Fix for hidden tabs initialization
+        navigation: {
+          nextEl: ".section-paralax-button-next",
+          prevEl: ".section-paralax-button-prev",
+        },
+        pagination: {
+          el: ".section-paralax-swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          1280: {
+            slidesPerView: 2.2,
+            spaceBetween: 30,
+            centeredSlides: false,
+          },
+        },
+      });
+    } else if (screenWidth >= 1280 && paralaxSwiper) {
+      paralaxSwiper.destroy(true, true);
+      paralaxSwiper = null;
+    }
+  }
+
+  // Initialize on load
+  initParallaxSwiper();
+
+  // Check on resize
+  window.addEventListener("resize", () => {
+    initParallaxSwiper();
+  });
 });
