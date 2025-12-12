@@ -415,9 +415,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // target: % position on the syringe image (x, y) relative to the image container
   // anchor: where on the text block the line starts ('right' or 'left')
   const connections = [
-    { source: "block-1", targetY: 20, anchor: "right" }, // Top Left -> Top Syringe
-    { source: "block-2", targetY: 80, anchor: "right" }, // Bottom Left -> Bottom Syringe
-    { source: "block-3", targetY: 40, anchor: "left" }, // Top Right -> Middle Syringe
+    { source: "block-1", targetY: 35, anchor: "right" }, // Top Left -> Middle Barrel
+    { source: "block-2", targetY: 60, anchor: "right" }, // Bottom Left -> Finger Grip
+    { source: "block-3", targetY: 53, anchor: "left" }, // Top Right -> Black Stopper
   ];
 
   function drawLines() {
@@ -471,7 +471,9 @@ document.addEventListener("DOMContentLoaded", () => {
       let d;
       if (conn.anchor === "left") {
         // For blocks on the right (anchor left): Draw underline Right -> Left, then connect to Syringe
-        d = `M ${midX} ${lineY} L ${startX} ${lineY} L ${endX} ${endY}`;
+        // Extend the horizontal line to the left to clear the text block
+        const turnX = startX - 60;
+        d = `M ${midX} ${lineY} L ${turnX} ${lineY} L ${endX} ${endY}`;
       } else {
         // For blocks on the left (anchor right): Draw underline Left -> Right, then connect to Syringe
         d = `M ${startX} ${lineY} L ${midX} ${lineY} L ${endX} ${endY}`;
@@ -479,8 +481,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       path.setAttribute("d", d);
       path.setAttribute("class", "connector-line");
-      path.setAttribute("stroke-dasharray", "1000"); // Initial large dash for animation
-      path.setAttribute("stroke-dashoffset", "1000");
 
       // Create Dot/Arrow at end
       const dot = document.createElementNS(
