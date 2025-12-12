@@ -617,4 +617,27 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  // Lazy Load Videos (IntersectionObserver)
+  const lazyVideos = document.querySelectorAll('.lazy-video');
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          video.play().catch(e => console.log('Lazy video play failed:', e));
+          observer.unobserve(video);
+        }
+      });
+    });
+
+    lazyVideos.forEach(video => {
+      videoObserver.observe(video);
+    });
+  } else {
+    // Fallback for older browsers
+    lazyVideos.forEach(video => {
+      video.play();
+    });
+  }
 });
