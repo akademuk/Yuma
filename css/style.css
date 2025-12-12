@@ -170,6 +170,7 @@
 
 body {
   font-family: var(--fonts-family-Instrument-Sans);
+  overflow-x: hidden;
 }
 
 .element {
