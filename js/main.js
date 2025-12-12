@@ -600,4 +600,21 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     initParallaxSwiper();
   });
+
+  // Video Hover Logic
+  const videoCards = document.querySelectorAll('.product__top-card-image, .product__bottom-card');
+
+  videoCards.forEach(card => {
+    const video = card.querySelector('video');
+    if (video) {
+      card.addEventListener('mouseenter', () => {
+        video.play().catch(e => console.log('Video play failed:', e));
+      });
+
+      card.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    }
+  });
 });

@@ -4875,8 +4875,9 @@ select {
   }
 
   .product__top-card-image video {
-    opacity: 2;
-    display: flex;
+    opacity: 0;
+    display: block;
+    z-index: 1;
   }
 
 
