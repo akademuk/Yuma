@@ -1040,6 +1040,9 @@ select {
   flex-shrink: 0;
   aspect-ratio: 476/845.98;
   margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .hero {
@@ -1050,6 +1053,7 @@ select {
   padding: 141px 16px 0 16px;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .hero .wrapper {
