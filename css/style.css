@@ -1220,6 +1220,7 @@ select {
   height: 100%;
   object-fit: cover;
   object-position: left center;
+  pointer-events: none;
 }
 
 .about__body-col {
