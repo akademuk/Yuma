@@ -3998,12 +3998,11 @@ select {
 
   .hero-image-wrapper {
     position: absolute;
-    top: 0;
+    top: 150px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     height: 100%;
-    overflow: hidden;
     pointer-events: none;
     z-index: 3;
   }
@@ -4047,7 +4046,8 @@ select {
   }
 
   .hero {
-    height: 100vh;
+    /* height: 100vh; */
+    height: 1200px;
     padding: 205px 52px 0 52px;
     clip-path: none;
   }
@@ -4059,16 +4059,17 @@ select {
   }
 
   .hero-image {
-    position: absolute;
+    position: static;
+    margin-left: -95px;
     bottom: 0;
     top: auto;
-    left: 50%;
+    /* left: 50%; */
     z-index: 3;
-    animation: identifier 3s ease forwards;
-    max-width: 451px;
-    height: 690px;
+    /* animation: identifier 3s ease forwards; */
+    max-width: 651px;
+    height: 1157px;
     flex-shrink: 0;
-    aspect-ratio: 451/690;
+    aspect-ratio: 651/1157;
   }
 
   .hero-image img {
