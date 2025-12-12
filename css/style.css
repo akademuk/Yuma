@@ -3389,6 +3389,7 @@ select {
   opacity: 0;
   z-index: -2;
   transition: all 0.3s;
+  display: none;
 }
 
 .product__top-card-image-icon {
@@ -4874,7 +4875,10 @@ select {
 
   .product__top-card-image video {
     opacity: 2;
+    display: flex;
   }
+
+
 }
 
 @media (max-width: 1279px) {
