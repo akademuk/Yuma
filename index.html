@@ -119,10 +119,10 @@
         </div>
       </div>
       <div class="hero-image-wrapper">
-        <div class="hero-image">
+        <div class="hero-image" data-aos="fade-up" data-aos-delay="100">
           <picture>
             <source media="(min-width: 1280px)" srcset="image/hero-image-desk.png" />
-            <img class="rellax" data-rellax-speed="2" src="image/hero-image-mob.png" width="375" height="600"
+            <img class="rellax" data-rellax-speed="10" src="image/hero-image-mob.png" width="375" height="600"
               alt="Hero Image" />
           </picture>
         </div>
@@ -188,7 +188,8 @@
       <div class="wrapper">
         <h2>Unique Advantages of <span class="element"> Phillex</span></h2>
         <div class="advantages__list">
-          <div class="advantages__list-item">
+          <div class="advantages__list-item" data-aos="fade-right" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <div class="advantages__list-item-image">
               <img src="image/advantages-image1.png" width="276" height="389" alt="" />
             </div>
@@ -196,7 +197,8 @@
               <img src="image/advantages-text1.svg" width="167" height="44" alt="" />
             </div>
           </div>
-          <div class="advantages__list-item">
+          <div class="advantages__list-item" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <div class="advantages__list-item-image">
               <img src="image/advantages-image2.png" width="276" height="389" alt="" />
             </div>
@@ -204,7 +206,8 @@
               <img src="image/advantages-text2.svg" width="167" height="44" alt="" />
             </div>
           </div>
-          <div class="advantages__list-item">
+          <div class="advantages__list-item" data-aos="fade-right" data-aos-delay="400" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <div class="advantages__list-item-image">
               <img src="image/advantages-image3.png" width="276" height="389" alt="" />
             </div>
@@ -212,7 +215,8 @@
               <img src="image/advantages-text3.svg" width="167" height="44" alt="" />
             </div>
           </div>
-          <div class="advantages__list-item">
+          <div class="advantages__list-item" data-aos="fade-right" data-aos-delay="600" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <p>
               Different degrees <br />
               of cross-linking
@@ -371,7 +375,7 @@
               </div>
               <button type="submit" class="btn btn--blue-outline">
                 SEND
-                <i class="icon-namechevron-right"></i>
+                <i class="icon-namearrow-right"></i>
               </button>
             </div>
           </form>
@@ -1239,7 +1243,7 @@
           </div>
         </div>
         <div class="results__body">
-          <div class="results__body-item">
+          <div class="results__body-item" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <h3>Patient Comfort <br>
               and Satisfaction (VAS Scale)</h3>
             <p><span class="element">Phillex</span> injections cause minimal pain for nearly 90% of patients, with
@@ -1247,7 +1251,8 @@
               post-treatment, most report results meeting or exceeding expectations, combining comfort and excellent
               aesthetic outcomes.</p>
           </div>
-          <div class="results__body-item">
+          <div class="results__body-item" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <h3>Preclinical <br>
               and Laboratory Testing</h3>
             <p><span class="element">Phillex</span> underwent full safety testing—biocompatibility, cytotoxicity,
@@ -1256,7 +1261,8 @@
               certification and
               Ukrainian registration confirm regulatory compliance and reliable performance.</p>
           </div>
-          <div class="results__body-item">
+          <div class="results__body-item" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <h3>Patient <br>
               comfort</h3>
             <p>In a double-blind trial with 66 patients, <span class="element">Phillex</span> Deep was compared to
@@ -1502,9 +1508,132 @@
 
     <section class="cta">
       <div class="wrapper">
-        
+        <div class="cta__wrapper">
+          <div class="cta__wrapper-left">
+            <h2>Ready to take your aesthetic treatments to a new level of quality with <span
+                class="element">Phillex</span>?</h2>
+            <p>Contact us to get detailed information, place an order, or discuss partnership opportunities.</p>
+            <div class="looking__content-banner">
+              <div class="looking__content-banner-img">
+                <img src="image/avatars-group.png" width="152" height="47" alt="">
+              </div>
+              <div class="looking__content-banner-text">
+                <h3>Support from our team</h3>
+                <p>
+                  Our team will help you choose the right solutions, explain key
+                  features, and answer any technical questions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="cta__wrapper-right">
+            <form class="looking__content-form">
+              <h3>
+                You can also leave a request through our website — we’ll get
+                back to you within one business day.
+              </h3>
+              <div class="looking__content-form-col">
+                <div class="looking__content-form-group input-group">
+                  <label for="name" class="input-label">Your name</label>
+                  <input type="text" id="name" name="name" class="input-field" required=""
+                    placeholder="Enter your name">
+                </div>
+                <div class="looking__content-form-group input-group">
+                  <label for="tel" class="input-label">Your tel</label>
+                  <input type="text" id="tel" name="tel" class="input-field" required="" placeholder="+44 7XXX XXXXXX">
+                </div>
+                <div class="looking__content-form-group input-group">
+                  <label for="city" class="input-label">Your city</label>
+                  <select name="city" id="city">
+                    <option value="" disabled="" selected="">Select a region</option>
+                    <option value="new-york">New York</option>
+                    <option value="los-angeles">Los Angeles</option>
+                    <option value="chicago">Chicago</option>
+                    <option value="houston">Houston</option>
+                    <option value="miami">Miami</option>
+                  </select>
+                </div>
+              </div>
+              <div class="looking__content-form-group full-width input-group">
+                <label for="message" class="input-label">Write your message here</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter text here"></textarea>
+              </div>
+              <div class="looking__content-form-content">
+                <div class="looking__content-form-checkbox">
+                  <input type="checkbox" id="consent" name="consent" required="">
+                  <label for="consent">
+                    <span class="checkbox-box"></span>
+                    I agree to the processing of
+                    <a href="/">personal data.</a></label>
+                </div>
+                <button type="submit" class="btn btn--blue-outline">
+                  SEND
+                  <i class="icon-namearrow-right"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
+
+    <footer class="footer">
+      <div class="wrapper">
+        <div class="footer__top">
+          <a href="/">
+            <img src="image/logo-white.svg" width="125" height="47" alt="">
+          </a>
+          <span>Begin Your Confident Transformation.</span>
+        </div>
+        <div class="footer__center">
+          <h2>Care for Your Beauty and Wellness.</h2>
+          <p>United Kingdom Scotland, Suite 1266, 111 West George Street, Glasgow G2 1QX, <a
+              href="tel:+447939834353">+44 793 9834353</a>, contact:
+            <a href="mailto:contact@yumamedical.co.uk">@yumamedical.co.uk</a>
+          </p>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__bottom-nav">
+            <nav class="footer__bottom-navs">
+              <ul class="footer__bottom-list">
+                <span>Legal:</span>
+                <li class="footer__bottom-list-item">
+                  <a href="/" class="footer__bottom-list-link">PRIVACY POLICY</a>
+                </li>
+                <li class="footer__bottom-list-item">
+                  <a href="/" class="footer__bottom-list-link">TERMS OF SERVICE</a>
+                </li>
+                <li class="footer__bottom-list-item">
+                  <a href="/" class="footer__bottom-list-link">COOKIES POLICY</a>
+                </li>
+              </ul>
+            </nav>
+            <p>© 2025 Yuma Medical LP®. All content is available under the Creative Commons Attribution 4.0
+              International license
+              unless otherwise noted.</p>
+          </div>
+          <nav class="footer__bottom-nav2">
+            <ul class="footer__bottom-nav2-list">
+              <li class="footer__bottom-nav2-item">
+                <a href="/" class="footer__bottom-nav2-link">COMPANY</a>
+              </li>
+              <li class="footer__bottom-nav2-item">
+                <a href="/" class="footer__bottom-nav2-link">PRODUCTS</a>
+              </li>
+              <li class="footer__bottom-nav2-item">
+                <a href="/" class="footer__bottom-nav2-link">NEWS</a>
+              </li>
+              <li class="footer__bottom-nav2-item">
+                <a href="/" class="footer__bottom-nav2-link">ACADEMY</a>
+              </li>
+              <li class="footer__bottom-nav2-item">
+                <a href="/" class="footer__bottom-nav2-link">CONTACTS</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
 
   </main>
 
