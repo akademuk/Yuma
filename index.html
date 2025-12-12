@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yuma Project</title>
 
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preload" href="fonts/InstrumentSans-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/icomoon.ttf?pknzsf" as="font" type="font/ttf" crossorigin>
+
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/vendor/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
@@ -111,7 +115,7 @@
     <section class="hero">
       <div class="wrapper">
         <div class="hero__content-image">
-          <img src="image/title.svg" width="776" height="93" alt="" />
+          <img src="image/title.svg" width="776" height="93" alt="" fetchpriority="high" />
         </div>
         <div class="hero__content-title">
           <h1><span>innovative</span> next-generation</h1>
@@ -123,7 +127,7 @@
           <picture>
             <source media="(min-width: 1280px)" srcset="image/hero-image-desk.png" />
             <img class="rellax" data-rellax-speed="10" src="image/hero-image-mob.png" width="375" height="600"
-              alt="Hero Image" />
+              alt="Hero Image" fetchpriority="high" />
           </picture>
         </div>
       </div>
@@ -1676,11 +1680,11 @@
     </div>
   </div>
 
-  <script src="js/vendor/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-  <script src="js/vendor/aos.js"></script>
-  <script src="js/vendor/rellax.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/vendor/swiper-bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
+  <script src="js/vendor/aos.js" defer></script>
+  <script src="js/vendor/rellax.min.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 
 </html>
