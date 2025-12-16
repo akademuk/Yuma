@@ -1641,7 +1641,7 @@ select {
   font-size: 18px;
   font-weight: 500;
   line-height: 130%;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
   letter-spacing: 0;
 }
 
@@ -3713,7 +3713,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: -64px;
+  margin-top: -68px;
   align-self: stretch;
   background: url(../image/footer.png), var(--colors-graphite-source);
   background-repeat: no-repeat;
@@ -4546,7 +4546,7 @@ select {
 }
 
 .why__right-accardion {
-  margin-top: 32px;
+  margin-top: 14px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -4685,6 +4685,9 @@ select {
   padding: 16px 24px;
 }
 
+.why__twac {
+  padding-bottom: 31px;
+}
 
 
 
@@ -5577,7 +5580,7 @@ select {
     display: flex;
     max-width: 1176px;
     align-items: flex-start;
-    gap: 48px;
+    gap: 30px;
     flex: 1 0 0;
     margin: 0 auto;
   }
@@ -5589,6 +5592,11 @@ select {
   .cta__wrapper-left h2 {
     font-size: 34px;
     margin-bottom: 24px;
+    padding-right: 20px;
+  }
+
+  .cta__wrapper-left h2 .element::after {
+    font-size: 20px;
   }
 
   .cta__wrapper-left p {
@@ -5897,6 +5905,18 @@ select {
 
   .accordion__title h3 {
     font-size: 20px;
+  }
+
+  .why__twac {
+    padding-bottom: 155px;
+  }
+
+  .footer {
+    margin-top: -90px;
+  }
+
+  .why__right-accardion {
+    margin-top: 19px;
   }
 }
 
