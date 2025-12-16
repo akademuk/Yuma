@@ -4583,7 +4583,6 @@ select {
 .accordion__item {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   padding: 16px;
   border-radius: 4px;
   border-bottom: 1px solid #F3F3F3;
@@ -4643,6 +4642,7 @@ select {
 
 .accordion__item.is-active {
   background: var(--colors-base-light-bg);
+  gap: 12px;
 }
 
 .accordion__item:hover {
@@ -4677,7 +4677,7 @@ select {
   line-height: 130%;
   letter-spacing: 0;
   display: inline;
-  padding: 16px 24px;
+  text-align: left;
 }
 
 .accordion__content p .element {
