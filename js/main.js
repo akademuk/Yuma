@@ -171,46 +171,70 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Initialize Main Swiper
-  const swiper = new Swiper(".product-range__swiper", {
-    effect: "cards",
-    grabCursor: true,
-    slideToClickedSlide: true,
-    observer: true, // Важно для корректной работы при изменении DOM
-    observeParents: true, // Важно для корректной работы при изменении DOM
-    wrapperClass: "product-range__swiper-wrapper", // Custom BEM wrapper class
-    slideClass: "product-range__swiper-slide", // Custom BEM slide class
-    cardsEffect: {
-      rotate: false, // This removes the rotation
-      perSlideOffset: 25, // Increased to make cards stick out more (wider stack)
-      perSlideRotate: 0, // Ensure per-slide rotation is 0
-      slideShadows: true, // Enabled shadows
-    },
-    breakpoints: {
-      1280: {
-        cardsEffect: {
-          perSlideOffset: 15, // Уменьшаем отступ на десктопе, чтобы слайды были ближе
+  let swiper;
+
+  const onSlideChange = function () {
+    // Update tabs and content when the slide changes
+    const activeSlide = this.slides[this.activeIndex];
+    const activeTabAttr = activeSlide.getAttribute("data-tab");
+
+    tabs.forEach((t) => t.classList.remove("product-range__tab--active"));
+    const activeTabElement = document.querySelector(
+      `.product-range__tab[data-tab="${activeTabAttr}"]`
+    );
+    if (activeTabElement) {
+      activeTabElement.classList.add("product-range__tab--active");
+    }
+
+    // Update content area
+    updateContent(activeTabAttr);
+  };
+
+  if (document.querySelector(".product-range__twac")) {
+    // TwAc Swiper (Fade Effect)
+    swiper = new Swiper(".product-range__swiper", {
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true,
+      },
+      grabCursor: true,
+      slideToClickedSlide: true,
+      observer: true,
+      observeParents: true,
+      wrapperClass: "product-range__swiper-wrapper",
+      slideClass: "product-range__swiper-slide",
+      on: {
+        slideChange: onSlideChange,
+      },
+    });
+  } else {
+    // Default Swiper (Cards Effect)
+    swiper = new Swiper(".product-range__swiper", {
+      effect: "cards",
+      grabCursor: true,
+      slideToClickedSlide: true,
+      observer: true,
+      observeParents: true,
+      wrapperClass: "product-range__swiper-wrapper",
+      slideClass: "product-range__swiper-slide",
+      cardsEffect: {
+        rotate: false, // This removes the rotation
+        perSlideOffset: 25, // Increased to make cards stick out more (wider stack)
+        perSlideRotate: 0, // Ensure per-slide rotation is 0
+        slideShadows: true, // Enabled shadows
+      },
+      breakpoints: {
+        1280: {
+          cardsEffect: {
+            perSlideOffset: 15, // Уменьшаем отступ на десктопе, чтобы слайды были ближе
+          },
         },
       },
-    },
-    on: {
-      slideChange: function () {
-        // Update tabs and content when the slide changes
-        const activeSlide = this.slides[this.activeIndex];
-        const activeTabAttr = activeSlide.getAttribute("data-tab");
-
-        tabs.forEach((t) => t.classList.remove("product-range__tab--active"));
-        const activeTabElement = document.querySelector(
-          `.product-range__tab[data-tab="${activeTabAttr}"]`
-        );
-        if (activeTabElement) {
-          activeTabElement.classList.add("product-range__tab--active");
-        }
-
-        // Update content area
-        updateContent(activeTabAttr);
+      on: {
+        slideChange: onSlideChange,
       },
-    },
-  });
+    });
+  }
 
   // Tab switching logic
   tabs.forEach((tab) => {
@@ -640,4 +664,39 @@ document.addEventListener("DOMContentLoaded", () => {
       video.play();
     });
   }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const accordionItems = document.querySelectorAll(".accordion__item");
+
+  accordionItems.forEach((item) => {
+    const header = item.querySelector(".accordion__header");
+
+    if (header) {
+      header.addEventListener("click", () => {
+        const isActive = item.classList.contains("is-active");
+
+        // Close all other items
+        accordionItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.classList.remove("is-active");
+            const otherBody = otherItem.querySelector(".accordion__body");
+            if (otherBody) otherBody.style.maxHeight = null;
+          }
+        });
+
+        // Toggle current item
+        item.classList.toggle("is-active");
+        const body = item.querySelector(".accordion__body");
+
+        if (body) {
+          if (!isActive) {
+            body.style.maxHeight = body.scrollHeight + "px";
+          } else {
+            body.style.maxHeight = null;
+          }
+        }
+      });
+    }
+  });
 });
