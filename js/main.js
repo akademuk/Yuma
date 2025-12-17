@@ -438,11 +438,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // source: ID of the text block
   // target: % position on the syringe image (x, y) relative to the image container
   // anchor: where on the text block the line starts ('right' or 'left')
-  const connections = [
-    { source: "block-1", targetY: 35, anchor: "right" }, // Top Left -> Middle Barrel
-    { source: "block-2", targetY: 60, anchor: "right" }, // Bottom Left -> Finger Grip
-    { source: "block-3", targetY: 53, anchor: "left" }, // Top Right -> Black Stopper
-  ];
+  let connections = [];
+
+  if (document.querySelector(".composition")) {
+    // Logic for Fortox (Composition) page
+    connections = [
+      { source: "block-1", targetY: 28, anchor: "right" }, // Albumin
+      { source: "block-2", targetY: 65, anchor: "right" }, // Sodium Chloride
+      { source: "block-3", targetY: 38, anchor: "left" }, // Botulinum Toxin
+      { source: "block-4", targetY: 75, anchor: "left" }, // Molecular Mass
+    ];
+  } else {
+    // Default logic (TwAc page)
+    connections = [
+      { source: "block-1", targetY: 35, anchor: "right" }, // Top Left -> Middle Barrel
+      { source: "block-2", targetY: 60, anchor: "right" }, // Bottom Left -> Finger Grip
+      { source: "block-3", targetY: 53, anchor: "left" }, // Top Right -> Black Stopper
+    ];
+  }
 
   function drawLines() {
     if (!svg || !syringe) return;
@@ -493,14 +506,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Determine drawing direction based on anchor
       let d;
-      if (conn.anchor === "left") {
-        // For blocks on the right (anchor left): Draw underline Right -> Left, then connect to Syringe
-        // Extend the horizontal line to the left to clear the text block
-        const turnX = startX - 60;
-        d = `M ${midX} ${lineY} L ${turnX} ${lineY} L ${endX} ${endY}`;
+      if (document.querySelector(".composition")) {
+        if (conn.anchor === "left") {
+          // Right block: Start at Left edge (startX), go Left 40px, then to Syringe
+          d = `M ${startX} ${lineY} L ${startX - 40} ${lineY} L ${endX} ${endY}`;
+        } else {
+          // Left block: Start at Right edge (midX), go Right 40px, then to Syringe
+          d = `M ${midX} ${lineY} L ${midX + 40} ${lineY} L ${endX} ${endY}`;
+        }
       } else {
-        // For blocks on the left (anchor right): Draw underline Left -> Right, then connect to Syringe
-        d = `M ${startX} ${lineY} L ${midX} ${lineY} L ${endX} ${endY}`;
+        if (conn.anchor === "left") {
+          // For blocks on the right (anchor left): Draw underline Right -> Left, then connect to Syringe
+          // Extend the horizontal line to the left to clear the text block
+          const turnX = startX - 60;
+          d = `M ${midX} ${lineY} L ${turnX} ${lineY} L ${endX} ${endY}`;
+        } else {
+          // For blocks on the left (anchor right): Draw underline Left -> Right, then connect to Syringe
+          d = `M ${startX} ${lineY} L ${midX} ${lineY} L ${endX} ${endY}`;
+        }
       }
 
       path.setAttribute("d", d);
@@ -554,6 +577,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const b2 = document.getElementById("block-2");
             if (b2) b2.classList.add("visible");
           }, 900);
+
+          setTimeout(() => {
+            const b4 = document.getElementById("block-4");
+            if (b4) b4.classList.add("visible");
+          }, 1200);
 
           setTimeout(() => {
             const details = document.querySelector(".details-container");

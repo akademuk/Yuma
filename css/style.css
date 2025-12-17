@@ -5050,33 +5050,145 @@ select {
 }
 
 .clinician-comfort.composition {
-  min-height: 744px;
+  min-height: 784px;
+  background: url(../image/bg22.png);
+  background-repeat: no-repeat;
+  background-size: inherit;
+  background-position: 50% 70%;
 }
 
 .composition .syringe-image {
   margin: 0 auto;
 }
 
+.info-block-svg {
+  display: none;
+}
 
+.vessel--fortox {
+  background: var(--colors-base-light-bg);
+}
 
+.vessel__header-title {
+  display: flex;
+  min-width: 256px;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 0 0;
+}
 
+.vessel__header-title p {
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+}
 
+.vessel--fortox .vessel__header {
+  gap: 17px;
+}
 
+.vessel--fortox .vessel__header-img img {
+  height: 134px;
+}
 
+.card {
+  padding: 32px 16px 64px 16px;
+  background: var(--colors-base-light-bg);
+}
 
+.card .wrapper {
+  display: flex;
+  max-width: 800px;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 24px 16px;
+  align-self: stretch;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
 
+.card-grafics-item {
+  min-width: 288px;
+  flex: 1 0 0;
+  border-radius: 24px;
+  overflow: hidden;
 
+}
 
+.card-grafics-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
+.assessment {
+  padding: 32px 16px;
+}
 
+.assessment .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 0 0;
+  border-radius: 24px;
+  background: var(--colors-base-light-bg);
+  max-width: 800px;
+  margin: 0 auto;
+}
 
+.assessment__title {
+  display: flex;
+  padding: 64px 16px 0 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
 
+.assessment__title h2 {
+  color: var(--colors-graphite-source);
+  text-align: center;
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 29px;
+  font-weight: 600;
+  line-height: 130%;
+  letter-spacing: 0;
+}
 
+.assessment__title p {
+  max-width: 776px;
+  flex: 1 0 0;
+  color: var(--colors-graphite-source);
+  text-align: center;
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+  display: inline;
+}
 
+.assessment__title p .element {
+  display: inline-flex;
+}
 
+.assessment__title-img {
+  display: flex;
+  padding: 3.946px 41.5px 4.065px 16.5px;
+  align-items: center;
+  align-self: stretch;
+  aspect-ratio: 361.00/146.12;
+}
 
-
-
+.assessment__title-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 
 
@@ -6407,6 +6519,7 @@ select {
 
   .composition .col-right {
     gap: 88px;
+    overflow: visible;
   }
 
   .advantages-sliders--fortox .advantages-swiper {
@@ -6422,6 +6535,7 @@ select {
 
   .clinician-comfort.composition {
     padding-top: 66px;
+    padding-bottom: 215px;
   }
 
   .composition .syringe-image img {
@@ -6434,13 +6548,22 @@ select {
     transform: translateX(-50%);
   }
 
+  .vessel__header-title p {
+    font-size: 16px;
+  }
+
   .composition .col-left {
     gap: 128px;
     padding-top: 53px;
+    overflow: visible;
   }
 
   .clinician-comfort.composition {
     min-height: 928px;
+    background: url(../image/bg22.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
   }
 
   .composition .syringe-container {
@@ -6454,6 +6577,66 @@ select {
 
   .composition .info-block {
     gap: 24px;
+    position: relative;
+  }
+
+  .info-block-svg {
+    position: absolute;
+    right: -215.712px;
+    bottom: -93.5px;
+    width: 591.712px;
+    height: 130.5px;
+    display: block;
+  }
+
+  .info-block-svg2 {
+    right: -215.712px;
+
+    top: -22.5px;
+  }
+
+  .info-block-svg3 {
+    left: -192.5px;
+    bottom: -74.212px;
+  }
+
+  .info-block-svg4 {
+    left: -192.5px;
+    bottom: -91.212px;
+  }
+
+  .vessel--fortox .vessel__header-img img {
+    width: 567px;
+    height: 254px;
+  }
+
+  .card {
+    padding: 32px 52px 64px 52px;
+  }
+
+  .card .wrapper {
+    max-width: 1176px;
+  }
+
+  .assessment .wrapper {
+    max-width: 1176px;
+    gap: 0;
+  }
+
+  .assessment__title {
+    padding-top: 64px;
+  }
+
+  .assessment__title h2 {
+    font-size: 34px;
+  }
+
+  .assessment__title p {
+    font-size: 20px;
+  }
+
+  .assessment__title-img {
+    padding: 10px 89px 10px 88px;
   }
 }
 
