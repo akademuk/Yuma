@@ -4696,6 +4696,396 @@ select {
   -webkit-line-clamp: 7;
 }
 
+.hero--fortox .hero__twac-content {
+  gap: 16px;
+  z-index: 4;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero--fortox .hero__twac-content-title {
+  min-width: 288px;
+  padding: 0 16px;
+}
+
+.hero--fortox .hero__twac-content-title h1 {
+  text-align: center;
+}
+
+.hero--fortox .hero__twac-content p {
+  text-align: center;
+  justify-content: center;
+}
+
+.hero--fortox .hero-image-wrapper {
+  width: 300px;
+  height: 485px;
+  bottom: 192px;
+  z-index: 3;
+}
+
+.hero--fortox .hero-image-wrapper .hero-image img {
+  width: 300px;
+  height: 485px;
+  content: none;
+  object-fit: contain;
+}
+
+.hero--fortox {
+  padding-bottom: 48px;
+}
+
+.hero--fortox .hero__twac-content p br {
+  display: none;
+}
+
+.hero--fortox.hero.hero__twac::before {
+  width: 1990px;
+  height: 385px;
+  border-radius: 1990px;
+  background: linear-gradient(180deg, rgba(248, 248, 248, 0.00) -32.21%, #FFF 14.84%);
+  filter: blur(12.552639961242676px);
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero--fortox .hero__twac-bg::before {
+  background: linear-gradient(180deg, rgba(243, 243, 243, 0.00) 8.45%, #F8F8F8 62.25%);
+}
+
+.about--fortox .about__body {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.about__body-video {
+  display: flex;
+  height: 276px;
+  min-width: 256px;
+  flex: 1 0 0;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about__body-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about__body-video .video-banner__play {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 99px;
+  border: 1px solid var(--colors-graphite-100);
+  background: var(--colors-graphite-100);
+  width: 42px;
+  z-index: 2;
+  height: 42px;
+  transition: all 0.3s;
+}
+
+
+.about__body-video .video-banner__play:hover {
+  border: 1px solid var(--colors-graphite-100);
+  background: var(--colors-graphite-50);
+}
+
+.about__body-video .video-banner__play:active {
+  border: 1px solid var(--colors-graphite-100);
+  background: var(--colors-graphite-50);
+}
+
+.about__body-col-title svg {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+}
+
+.about__body-col-title {
+  width: 100%;
+}
+
+.about--fortox .about__body-col-title h3 {
+  width: 100%;
+  flex-direction: row;
+  display: inline;
+}
+
+.about--fortox .about__twac-wrapper .about__body {
+  margin-bottom: 0;
+}
+
+.how-works {
+  padding: 64px 16px;
+}
+
+.how-works .wrapper {
+  display: flex;
+  max-width: 800px;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  flex: 1 0 0;
+  margin: 0 auto;
+}
+
+.how-works__header {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.how-works__header h2 {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0;
+  min-width: 288px;
+  flex: 1 0 0;
+  display: inline;
+}
+
+.how-works__header h2 .element {
+  display: inline-flex;
+  font-weight: 600;
+}
+
+.how-works__header h2 .element::after {
+  font-size: 30px;
+  margin-top: -20px;
+}
+
+.how-works__header-description p {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+  display: inline;
+}
+
+.how-works__header-description p .element {
+  display: inline-flex;
+}
+
+.how-works__header-description {
+  display: flex;
+  min-width: 288px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex: 1 0 0;
+  position: relative;
+  z-index: 2;
+}
+
+.how-works__content {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 24px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.how-works__content-image {
+  display: flex;
+  min-width: 288px;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+}
+
+.how-works__content-list {
+  display: flex;
+  min-width: 288px;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 0;
+  gap: 16px;
+  position: relative;
+  z-index: 3;
+}
+
+.how-works__content-item {
+  display: flex;
+  height: 176px;
+  min-height: 176px;
+  flex: 1 0 0;
+  width: 100%;
+  padding: 24px 150px 24px 32px;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 24px;
+  background: var(--colors-base-light-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-works__content-item img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.how-works__content-item h3 {
+  overflow: hidden;
+  color: var(--colors-graphite-900);
+  text-overflow: ellipsis;
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 130%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  letter-spacing: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.how-works__content-item p {
+  color: var(--colors-graphite-700);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.about--fortox .about__twac-wrapper {
+  padding-bottom: 60px;
+}
+
+.how-works__header-description .btn {
+  gap: 0
+}
+
+.how-works__header-description .btn i {
+  margin-left: 28px;
+}
+
+.how-works__content-image img {
+  width: 1002px;
+  height: 1002px;
+  position: absolute;
+  object-fit: cover;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.how-works__content-image {
+  min-height: 576px;
+  position: relative;
+}
+
+.advantages-sliders--fortox .advantages-swiper {
+  padding: 32px 16px;
+}
+
+.advantages-sliders--fortox .advantages-swiper .swiper-slide {
+  width: 276px;
+  height: 276px;
+  min-width: 276px;
+  min-height: 276px;
+}
+
+.composition {
+  padding: 70px 16px;
+}
+
+.composition .info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.composition .syringe-image {
+  position: relative;
+  height: 475.787px;
+}
+
+.composition .syringe-image img {
+  width: 195.842px;
+  height: 510.309px;
+  aspect-ratio: 195.84/510.31;
+  object-fit: cover;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.composition .syringe-section {
+  width: 100%;
+}
+
+.composition .syringe-container {
+  align-items: flex-start;
+}
+
+.clinician-comfort.composition {
+  min-height: 744px;
+}
+
+.composition .syringe-image {
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4722,6 +5112,10 @@ select {
     position: relative;
   }
 
+  .composition .syringe-container {
+    padding-right: 0;
+  }
+
   .enhanced__content-box-image-grid img {
     object-fit: none;
   }
@@ -4737,6 +5131,10 @@ select {
 
   .enhanced__content {
     margin-top: 0;
+  }
+
+  .composition .syringe-image {
+    position: absolute;
   }
 }
 
@@ -5923,6 +6321,140 @@ select {
   .why__right-accardion {
     margin-top: 19px;
   }
+
+  .hero--fortox .hero__twac-content {
+    flex-direction: row;
+  }
+
+  .hero--fortox.hero .wrapper {
+    max-width: 1816px;
+  }
+
+  .hero--fortox .hero__twac-content-title {
+    padding: 32px;
+  }
+
+  .hero--fortox .hero__twac-content-title h1 {
+    text-align: left;
+  }
+
+  .hero--fortox .hero__twac-content p br {
+    display: block;
+  }
+
+  .hero--fortox .hero__twac-content p {
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  .hero--fortox .hero-image-wrapper .hero-image img {
+    width: 512px;
+    flex-shrink: 0;
+    height: 814px;
+  }
+
+  .hero--fortox .hero-image-wrapper {
+    width: 512px;
+    height: 814px;
+    bottom: 135px;
+  }
+
+  .about--fortox .about__twac-wrapper .about__title {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .about--fortox .about__body {
+    gap: 124px;
+  }
+
+  .about__body-video {
+    height: 376px;
+  }
+
+  .about--fortox .about__body-col {
+    max-width: 476px;
+  }
+
+  .about--fortox .about__twac-wrapper {
+    padding-bottom: 96px;
+  }
+
+  .how-works {
+    padding: 64px 52px;
+  }
+
+  .how-works .wrapper {
+    max-width: 1176px;
+    gap: 64px;
+  }
+
+  .how-works__header h2 {
+    font-size: 60px;
+  }
+
+  .how-works__header-description p {
+    font-size: 20px;
+  }
+
+  .how-works__content-item {
+    padding: 24px 296px 24px 32px;
+  }
+
+  .how-works__content-list {
+    gap: 24px;
+  }
+
+  .composition .col-right {
+    gap: 88px;
+  }
+
+  .advantages-sliders--fortox .advantages-swiper {
+    padding: 64px 52px;
+  }
+
+  .advantages-sliders--fortox .advantages-swiper .swiper-slide {
+    width: 376px;
+    height: 376px;
+    min-height: 376px;
+    min-width: 376px;
+  }
+
+  .clinician-comfort.composition {
+    padding-top: 66px;
+  }
+
+  .composition .syringe-image img {
+    width: 376px;
+    height: 676px;
+    min-height: 676px;
+    aspect-ratio: 376/676;
+    top: -72px;
+    left: 44%;
+    transform: translateX(-50%);
+  }
+
+  .composition .col-left {
+    gap: 128px;
+    padding-top: 53px;
+  }
+
+  .clinician-comfort.composition {
+    min-height: 928px;
+  }
+
+  .composition .syringe-container {
+    min-height: 319px;
+    align-items: flex-end;
+  }
+
+  .composition .info-text {
+    font-size: 16px;
+  }
+
+  .composition .info-block {
+    gap: 24px;
+  }
 }
 
 @media (max-width: 1279px) {
@@ -5953,6 +6485,10 @@ select {
   .clinician-comfort {
     background-size: inherit;
     background-position: 50% 170%;
+  }
+
+  .composition .clinician-comfort {
+    background-position: 50% 70%;
   }
 }
 

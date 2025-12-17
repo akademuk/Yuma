@@ -29,66 +29,91 @@
 .icon-namearrow-down:before {
   content: "\e900";
 }
+
 .icon-namearrow-left:before {
   content: "\e901";
 }
+
 .icon-namearrow-right:before {
   content: "\e902";
 }
+
 .icon-namearrow-up:before {
   content: "\e903";
 }
+
 .icon-namebullseye:before {
   content: "\e904";
 }
+
 .icon-nameburger:before {
   content: "\e905";
 }
+
 .icon-namecaret-right-fill:before {
   content: "\e906";
 }
+
 .icon-namechevron-down:before {
   content: "\e907";
 }
+
 .icon-namechevron-left:before {
   content: "\e908";
 }
+
 .icon-namechevron-right:before {
   content: "\e909";
 }
+
 .icon-namechevron-up:before {
   content: "\e90a";
 }
+
 .icon-nameclock-history:before {
   content: "\e90b";
 }
+
 .icon-nameclose:before {
   content: "\e90c";
 }
+
 .icon-nameemoji-smile:before {
   content: "\e90d";
 }
+
 .icon-nameflower:before {
   content: "\e90e";
 }
+
 .icon-namehand-thumbs-up:before {
   content: "\e90f";
 }
+
 .icon-nameheart-pulse:before {
   content: "\e910";
 }
+
 .icon-namenoise-reduction:before {
   content: "\e911";
 }
+
 .icon-nameplus-circle:before {
   content: "\e912";
 }
+
 .icon-nameshadows:before {
   content: "\e913";
 }
+
 .icon-namevignette:before {
   content: "\e914";
 }
+
 .icon-namewater:before {
   content: "\e915";
+}
+
+.icon-icons:before {
+  content: "\e916";
 }
