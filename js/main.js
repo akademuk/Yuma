@@ -719,7 +719,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (body) {
           if (!isActive) {
-            body.style.maxHeight = body.scrollHeight + "px";
+            body.style.maxHeight = body.scrollHeight + 32 + "px";
           } else {
             body.style.maxHeight = null;
           }
