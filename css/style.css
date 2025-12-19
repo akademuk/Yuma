@@ -5565,6 +5565,17 @@ select {
   font-weight: 500;
   line-height: 130%;
   letter-spacing: 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s;
+}
+
+.breadcrumbs-link:hover {
+  color: var(--colors-red-medical-source);
+}
+
+.breadcrumbs-link:active {
+  color: var(--colors-red-medical-source);
+  border-bottom: 1px solid var(--colors-red-medical-source);
 }
 
 .breadcrumbs-text {
