@@ -728,3 +728,74 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Appeex Cards Swiper Logic
+  const appeexSwiperSelector = ".hero--appeex-cards-swiper";
+  let appeexSwiper = null;
+
+  function initAppeexSwiper() {
+    const screenWidth = window.innerWidth;
+    const swiperElement = document.querySelector(appeexSwiperSelector);
+
+    if (!swiperElement) return;
+
+    if (screenWidth < 1280 && !appeexSwiper) {
+      appeexSwiper = new Swiper(appeexSwiperSelector, {
+        slidesPerView: "auto",
+        spaceBetween: 64,
+        centeredSlides: true,
+        loop: false,
+        observer: true,
+        observeParents: true,
+        navigation: {
+          nextEl: ".hero--appeex-cards-button-next",
+          prevEl: ".hero--appeex-cards-button-prev",
+        },
+        pagination: {
+          el: ".hero--appeex-cards-pagination",
+          clickable: true,
+        },
+      });
+    } else if (screenWidth >= 1280 && appeexSwiper) {
+      appeexSwiper.destroy(true, true);
+      appeexSwiper = null;
+    }
+  }
+
+  // Initialize on load
+  initAppeexSwiper();
+
+  // Check on resize
+  window.addEventListener("resize", () => {
+    initAppeexSwiper();
+  });
+
+  // Chemical Mediators Tabs Logic
+  const chemicalTabs = document.querySelectorAll(".chemical-mediators__tab");
+
+  chemicalTabs.forEach((tab) => {
+    tab.addEventListener("click", (e) => {
+      if (window.innerWidth < 1280) {
+        e.preventDefault();
+        // Close other tabs
+        chemicalTabs.forEach((t) => {
+          if (t !== tab) t.classList.remove("is-active");
+        });
+        // Toggle current tab
+        tab.classList.toggle("is-active");
+      }
+    });
+  });
+
+  // Close tabs when clicking outside
+  document.addEventListener("click", (e) => {
+    if (window.innerWidth < 1280) {
+      if (!e.target.closest(".chemical-mediators__tab")) {
+        chemicalTabs.forEach((tab) => {
+          tab.classList.remove("is-active");
+        });
+      }
+    }
+  });
+});
