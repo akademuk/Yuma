@@ -99,6 +99,78 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // News Slider & Tabs
+  const newsContainer = document.querySelector(".news__cards");
+  if (newsContainer) {
+    const allSlides = Array.from(newsContainer.querySelectorAll(".swiper-slide"));
+    const wrapper = newsContainer.querySelector(".swiper-wrapper");
+    const tabs = document.querySelectorAll(".news__tab");
+
+    let newsSwiper;
+
+    function initSwiper() {
+      newsSwiper = new Swiper(".news__cards", {
+        slidesPerView: 'auto',
+        spaceBetween: 24,
+        observer: true,
+        observeParents: true,
+        navigation: {
+          nextEl: ".news__tabs-button-next",
+          prevEl: ".news__tabs-button-prev",
+        },
+        pagination: {
+          el: ".news__tabs-swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          1280: {
+            spaceBetween: 48,
+          },
+        },
+      });
+    }
+
+    function filterSlides(category) {
+      // Prevent layout jump by setting min-height
+      const containerHeight = newsContainer.offsetHeight;
+      newsContainer.style.minHeight = `${containerHeight}px`;
+
+      if (newsSwiper) {
+        newsSwiper.destroy(true, true);
+      }
+
+      wrapper.innerHTML = "";
+
+      const filteredSlides = allSlides.filter(
+        (slide) => slide.getAttribute("data-category") === category
+      );
+
+      filteredSlides.forEach((slide) => wrapper.appendChild(slide));
+
+      initSwiper();
+
+      // Remove min-height after a short delay to allow Swiper to settle
+      setTimeout(() => {
+        newsContainer.style.minHeight = "";
+      }, 100);
+    }
+
+    // Initial filter
+    const activeTab = document.querySelector(".news__tab--active");
+    if (activeTab) {
+      filterSlides(activeTab.getAttribute("data-tab"));
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        tabs.forEach((t) => t.classList.remove("news__tab--active"));
+        tab.classList.add("news__tab--active");
+        filterSlides(tab.getAttribute("data-tab"));
+      });
+    });
+  }
+
   if (document.querySelector(".advantages-swiper")) {
     const swiper = new Swiper(".advantages-swiper", {
       loop: false,
@@ -799,3 +871,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
