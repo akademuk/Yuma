@@ -196,6 +196,32 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   }
+
+  if (document.querySelector(".indications-swiper")) {
+    const swiper = new Swiper(".indications-swiper", {
+      loop: false,
+      speed: 600,
+
+      pagination: {
+        el: ".indications-swiper-pagination",
+        clickable: true,
+      },
+
+      navigation: {
+        nextEl: ".indications-button-next",
+        prevEl: ".indications-button-prev",
+      },
+
+      slidesPerView: "auto",
+      spaceBetween: 24,
+
+      breakpoints: {
+        1280: {
+          spaceBetween: 24,
+        },
+      },
+    });
+  }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
