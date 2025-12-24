@@ -114,6 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
         spaceBetween: 24,
         observer: true,
         observeParents: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
         navigation: {
           nextEl: ".news__tabs-button-next",
           prevEl: ".news__tabs-button-prev",
@@ -175,6 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const swiper = new Swiper(".advantages-swiper", {
       loop: false,
       speed: 600,
+      mousewheel: {
+        forceToAxis: true,
+      },
 
       pagination: {
         el: ".advantages-sliders-pagination",
@@ -201,6 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const swiper = new Swiper(".indications-swiper", {
       loop: false,
       speed: 600,
+      mousewheel: {
+        forceToAxis: true,
+      },
 
       pagination: {
         el: ".indications-swiper-pagination",
@@ -234,6 +243,9 @@ document.addEventListener("DOMContentLoaded", function () {
     spaceBetween: 16,
     observer: true, // Fix for hidden tabs initialization
     observeParents: true, // Fix for hidden tabs initialization
+    mousewheel: {
+      forceToAxis: true,
+    },
     navigation: {
       nextEl: ".product-range-button-next",
       prevEl: ".product-range-button-prev",
@@ -299,6 +311,9 @@ document.addEventListener("DOMContentLoaded", function () {
       slideToClickedSlide: true,
       observer: true,
       observeParents: true,
+      mousewheel: {
+        forceToAxis: true,
+      },
       wrapperClass: "product-range__swiper-wrapper",
       slideClass: "product-range__swiper-slide",
       on: {
@@ -313,6 +328,9 @@ document.addEventListener("DOMContentLoaded", function () {
       slideToClickedSlide: true,
       observer: true,
       observeParents: true,
+      mousewheel: {
+        forceToAxis: true,
+      },
       wrapperClass: "product-range__swiper-wrapper",
       slideClass: "product-range__swiper-slide",
       cardsEffect: {
@@ -899,3 +917,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+// Global handler to prevent browser navigation on horizontal scroll over sliders
+document.addEventListener(
+  "wheel",
+  (e) => {
+    // Check if scrolling horizontally
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      // Check if the hover target is inside a slider
+      const isSlider = e.target.closest(
+        ".swiper, .news__cards, .advantages-swiper, .indications-swiper, .product-range__nested-swiper, .product-range__swiper"
+      );
+
+      if (isSlider) {
+        // Prevent default browser behavior (navigation)
+        e.preventDefault();
+      }
+    }
+  },
+  { passive: false }
+);
