@@ -1129,7 +1129,7 @@ select {
 }
 
 .about {
-  padding: 64px 16px;
+  padding: 64px 16px 288px 16px;
   overflow: hidden;
   position: relative;
 }
@@ -1139,7 +1139,7 @@ select {
   max-width: 800px;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 64px;
   align-self: stretch;
   margin: 0 auto;
 }
@@ -1151,6 +1151,8 @@ select {
   gap: 20px;
   align-self: stretch;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
 .about__title {
@@ -1195,36 +1197,31 @@ select {
 }
 
 .about__body {
-  margin-bottom: 185px;
   display: flex;
   align-items: flex-start;
   align-content: flex-start;
   gap: 16px;
   align-self: stretch;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
 .about__video {
   display: flex;
-  height: 184.26px;
-  max-width: 676px;
+  width: 393px;
+  height: 100%;
   width: 100%;
-  max-height: 345.042px;
-  justify-content: flex-end;
-  align-items: center;
-  align-self: stretch;
-  aspect-ratio: 361/184.26;
   position: absolute;
-  bottom: 66px;
+  top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
 }
 
 .about__video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
   pointer-events: none;
 }
 
@@ -1400,7 +1397,7 @@ select {
   display: flex;
   width: 100%;
   height: 100%;
-  padding: 16px;
+  padding: 32px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
@@ -1952,7 +1949,7 @@ height: 32px;
 
 .product-range__tabs {
   display: flex;
-  padding: 60px 0 16px 0;
+  padding: 78px 0 16px 0;
   flex-direction: column;
   align-items: center;
   align-self: stretch;
@@ -6401,10 +6398,6 @@ height: 32px;
   letter-spacing: 0;
 }
 
-.advantages-sliders-nav {
-  margin-top: 24px;
-}
-
 .news__tabs-button-next,
 .news__tabs-button-prev {
   width: 42px;
@@ -8160,9 +8153,10 @@ width: 388px;
 
   .hero {
     /* height: 100vh; */
-    height: 1200px;
+    height: 1280px;
     padding: 205px 52px 0 52px;
     clip-path: none;
+    min-height: auto;
   }
 
   .hero .wrapper {
@@ -8232,6 +8226,10 @@ width: 388px;
     margin-bottom: 0;
   }
 
+  .about {
+    padding: 64px 52px 380px 52px;
+  }
+
   .about__body-col {
     padding: 0 48px;
   }
@@ -8244,10 +8242,19 @@ width: 388px;
     font-size: 16px;
   }
 
+  .about__video img{
+   object-position: left;
+  }
+
   .about__video {
-    max-width: 1100px;
-    height: 846px;
+    height: 492px;
+    top: auto;
     bottom: 0;
+    left: 14%;
+  }
+
+  .advantages-sliders--phillex .advantages-slider-card{
+    padding: 32px !important;
   }
 
   .hero__content-title h1 {
@@ -8365,6 +8372,10 @@ width: 388px;
     margin-top: 0;
   }
 
+  .looking__content-banner {
+    max-width: 576px;
+  }
+
   .looking__content-banner-text h3 {
     font-size: 16px;
   }
@@ -8407,6 +8418,7 @@ width: 388px;
 
   .looking__content-form {
     gap: 24px;
+    max-width: 576px;
     padding-left: 48px;
     border-left: 3px solid var(--colors-red-medical-200);
   }
@@ -8747,6 +8759,7 @@ width: 388px;
   .partners__content {
     max-width: 376px;
     width: 100%;
+    margin-left: 16%;
     margin: 0 auto;
     align-items: flex-start;
   }
@@ -10436,12 +10449,13 @@ height: 352px;
         font-size: 14px;
       }
 
+      .product-range--phillex {
+        padding: 55px 52px;
+      }
+
 }
 
 @media (max-width: 1279px) {
-  .about__body {
-    margin-bottom: 345px;
-  }
 
   .about__video {
     bottom: 148px;
@@ -10453,10 +10467,6 @@ height: 352px;
 }
 
 @media (max-width: 768px) {
-  .about__body {
-    margin-bottom: 185px;
-  }
-
   .about__video {
     bottom: 66px;
   }

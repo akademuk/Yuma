@@ -179,8 +179,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function initAdvantagesSwiper() {
       const screenWidth = window.innerWidth;
+      const swiperElement = document.querySelector(".advantages-swiper");
+      const isPhillex = swiperElement && swiperElement.closest(".advantages-sliders--phillex");
+      const shouldEnable = screenWidth < 1280 || (screenWidth >= 1280 && isPhillex);
 
-      if (screenWidth < 1280 && !advantagesSwiper) {
+      if (shouldEnable && !advantagesSwiper) {
         advantagesSwiper = new Swiper(".advantages-swiper", {
           loop: false,
           speed: 600,
@@ -200,9 +203,14 @@ document.addEventListener("DOMContentLoaded", () => {
           },
 
           slidesPerView: "auto",
-          spaceBetween: 16,
+          spaceBetween: 8,
+          breakpoints: {
+            1280: {
+              spaceBetween: 24,
+            },
+          },
         });
-      } else if (screenWidth >= 1280 && advantagesSwiper) {
+      } else if (!shouldEnable && advantagesSwiper) {
         advantagesSwiper.destroy(true, true);
         advantagesSwiper = null;
       }
