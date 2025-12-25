@@ -1400,15 +1400,38 @@ select {
   display: flex;
   width: 100%;
   height: 100%;
-  padding: 32px;
+  padding: 16px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   flex: 1 0 0;
+  overflow: hidden;
   align-self: stretch;
   border-radius: 24px;
   background: var(--colors-base-light-bg);
   transition: all 0.3s;
+  position: relative;
+}
+
+.advantages-slider-card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  z-index: 0;
+}
+
+.advantages-slider-card-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.advantages-slider-card-img {
+  width: 32px;
+height: 32px;
 }
 
 .advantages-slider-card:hover {
@@ -1437,6 +1460,8 @@ select {
   font-weight: 600;
   line-height: 130%;
   letter-spacing: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .advantages-slider-card p {
@@ -1451,6 +1476,8 @@ select {
   font-weight: 400;
   line-height: 130%;
   letter-spacing: 0;
+    position: relative;
+  z-index: 2;
 }
 
 .advantages-sliders-nav {
@@ -1825,11 +1852,7 @@ select {
 
 /* Nested Swiper Styles */
 .product-range__nested-swiper {
-  width: calc(100% + 32px);
-  padding: 0 16px;
-  margin-left: -16px;
-  min-width: 100vw;
-  margin-right: auto;
+  width: 100%;
 }
 
 .product-range__nested-swiper .swiper-slide img {
@@ -2655,6 +2678,10 @@ select {
   align-items: center;
   gap: 16px;
   align-self: stretch;
+}
+
+.clinician-comfort__title .btn {
+  margin-left: auto;
 }
 
 .clinician-comfort__title h2 {
@@ -3672,6 +3699,11 @@ select {
   font-weight: 400;
   line-height: 130%;
   letter-spacing: 0;
+  display: inline;
+}
+
+.cta__wrapper-left p .element {
+  display: inline-flex;
 }
 
 .cta__wrapper-left .looking__content-banner {
@@ -4722,17 +4754,17 @@ select {
 }
 
 .hero--fortox .hero-image-wrapper {
-  width: 300px;
-  height: 485px;
+  width: 500px;
+  height: 500px;
   bottom: 192px;
   z-index: 3;
 }
 
 .hero--fortox .hero-image-wrapper .hero-image img {
-  width: 300px;
-  height: 485px;
+  width: 500px;
+  height: 500px;
   content: none;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .hero--fortox {
@@ -4835,6 +4867,7 @@ select {
 
 .how-works {
   padding: 64px 16px;
+  overflow: hidden;
 }
 
 .how-works .wrapper {
@@ -5013,17 +5046,25 @@ select {
 
 .advantages-sliders--fortox .advantages-swiper {
   padding: 32px 16px;
+  max-width: 832px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .advantages-sliders--fortox .advantages-swiper .swiper-slide {
-  width: 276px;
+  flex: 1 0 0;
   height: 276px;
   min-width: 276px;
   min-height: 276px;
+  max-width: 392px;
+}
+
+.advantages-sliders--fortox .advantages-swiper .swiper-slide:nth-last-of-type(1) {
+  margin-right: 0 !important;
 }
 
 .composition {
-  padding: 70px 16px;
+  padding: 60px 16px 66px;
 }
 
 .composition .info-block {
@@ -7491,6 +7532,209 @@ border: 1px solid var(--colors-graphite-100, #DDD);
 background: var(--colors-base-white-100, #FFF);
 }
 
+.how-works__content-list .product-range__nested-title{
+  margin-top: 30px;
+}
+
+.how-works__content-list .product-range__nested-title h4 .element {
+  color: var(--colors-red-medical-source);
+}
+
+.how-works__content-list .product-range__nested-card {
+  flex-direction: row;
+}
+
+.how-works__content-list .product-range__nested-card a {
+  height: 276px;
+}
+
+.how-works__content-list .advantages-sliders-nav {
+  margin-top: 14px;
+}
+
+.indicationses {
+  padding: 52px 16px 32px 16px;
+  overflow: hidden;
+}
+
+.indicationses .wrapper {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  align-self: stretch;
+  margin: 0 auto;
+}
+
+.indicationses-title {
+  width: 100%;
+}
+
+.indicationses-title h2 {
+  color: var(--colors-graphite-source);
+  text-align: center;
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.indicationses-swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.indicationses-swiper-slide {
+  width: 256px;
+  height: 256px;
+}
+
+.indicationses-swiper-slide-box {
+  width: 256px;
+  height: 256px;
+  border-radius: 24px;
+  background: var(--colors-base-light-bg);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.indicationses-swiper-slide-box h3 {
+  color: var(--colors-graphite-900);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.indicationses-swiper-slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.indicationses-swiper-slide-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.indicationses-sliders-nav {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.indicationses-button-next,
+.indicationses-button-prev {
+  width: 42px;
+  height: 42px;
+  border-radius: 99px;
+  border: 1px solid var(--colors-graphite-100);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.indicationses-button-next:hover,
+.indicationses-button-prev:hover {
+  border: 1px solid var(--colors-red-medical-source);
+  background: var(--colors-base-white-100);
+}
+
+.indicationses-button-next:active,
+.indicationses-button-prev:active {
+  border: 1px solid var(--colors-red-medical-source);
+  background: var(--colors-base-white-100);
+}
+
+.indicationses-button-next i:before,
+.indicationses-button-prev i:before {
+  font-size: 20px;
+  color: #ddd;
+  transition: all 0.3s;
+}
+
+.indicationses-button-next:hover i:before,
+.indicationses-button-prev:hover i:before {
+  color: #fa4549;
+}
+
+.indicationses-button-next:active i:before,
+.indicationses-button-prev:active i:before {
+  color: #fa4549;
+}
+
+.indicationses-swiper-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: static;
+}
+
+.indicationses-swiper-pagination .swiper-pagination-bullet {
+  width: 30px;
+  height: 3px;
+  opacity: 0.5;
+  background: var(--colors-graphite-100);
+  border-radius: 0;
+  transition: all 0.3s;
+}
+
+.indicationses-swiper-pagination .swiper-pagination-bullet:hover {
+  opacity: 0.5;
+  background: var(--colors-red-medical-source);
+}
+
+.indicationses-swiper-pagination .swiper-pagination-bullet:active {
+  background: var(--colors-red-medical-source);
+  opacity: 1;
+}
+
+.indicationses-swiper-pagination .swiper-pagination-bullet-active {
+  background: var(--colors-red-medical-source);
+  opacity: 1;
+}
+
+.why--fortox .why__right .accordion__content ul {
+  gap: 28px;
+}
+
+.why--fortox .why__right .why__right-accardions {
+  gap: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media (min-width: 800px) {
@@ -8819,15 +9063,36 @@ background: var(--colors-base-white-100, #FFF);
     overflow: visible;
   }
 
+
+    .advantages-sliders--fortox {
+      padding: 64px 52px;
+    }
+
   .advantages-sliders--fortox .advantages-swiper {
-    padding: 64px 52px;
+    padding: 0;
+    max-width: 1176px;
+    width: 100%;
+  }
+
+    .advantages-sliders--fortox .advantages-swiper .swiper-wrapper {
+      display: flex;
+      gap: 24px;
+    }
+
+  .advantages-sliders--fortox .advantages-sliders-nav {
+    display: none;
   }
 
   .advantages-sliders--fortox .advantages-swiper .swiper-slide {
-    width: 376px;
+    width: acuto;
+    max-width: none;
     height: 376px;
     min-height: 376px;
     min-width: 376px;
+  }
+
+  .advantages-slider-card {
+    padding: 32px 176px 32px 32px;
   }
 
   .clinician-comfort.composition {
@@ -9747,6 +10012,24 @@ height: 352px;
 
     .box-product--list {
       overflow: visible;
+    }
+
+    .indicationses {
+      padding: 96px 52px 64px 52px;
+    }
+
+    .indicationses .wrapper {
+      max-width: 1176px;
+      gap: 92px;
+    }
+
+    .indicationses-swiper-slide {
+      width: 276px;
+      height: 276px;
+    }
+
+    .indicationses-swiper-slide-box h3 {
+      font-size: 20px;
     }
 }
 

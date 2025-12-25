@@ -175,36 +175,45 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (document.querySelector(".advantages-swiper")) {
-    const swiper = new Swiper(".advantages-swiper", {
-      loop: false,
-      speed: 600,
-      mousewheel: {
-        forceToAxis: true,
-      },
+    let advantagesSwiper = null;
 
-      pagination: {
-        el: ".advantages-sliders-pagination",
-        clickable: true,
-      },
+    function initAdvantagesSwiper() {
+      const screenWidth = window.innerWidth;
 
-      navigation: {
-        nextEl: ".advantages-sliders-button-next",
-        prevEl: ".advantages-sliders-button-prev",
-      },
+      if (screenWidth < 1280 && !advantagesSwiper) {
+        advantagesSwiper = new Swiper(".advantages-swiper", {
+          loop: false,
+          speed: 600,
+          watchOverflow: true,
+          mousewheel: {
+            forceToAxis: true,
+          },
 
-      slidesPerView: "auto",
-      spaceBetween: 8,
+          pagination: {
+            el: ".advantages-sliders-pagination",
+            clickable: true,
+          },
 
-      breakpoints: {
-        1280: {
-          spaceBetween: 24,
-        },
-      },
-    });
+          navigation: {
+            nextEl: ".advantages-sliders-button-next",
+            prevEl: ".advantages-sliders-button-prev",
+          },
+
+          slidesPerView: "auto",
+          spaceBetween: 16,
+        });
+      } else if (screenWidth >= 1280 && advantagesSwiper) {
+        advantagesSwiper.destroy(true, true);
+        advantagesSwiper = null;
+      }
+    }
+
+    initAdvantagesSwiper();
+    window.addEventListener("resize", initAdvantagesSwiper);
   }
 
-  if (document.querySelector(".indications-swiper")) {
-    const swiper = new Swiper(".indications-swiper", {
+  if (document.querySelector(".indicationses-swiper")) {
+    const swiper = new Swiper(".indicationses-swiper", {
       loop: false,
       speed: 600,
       mousewheel: {
@@ -212,17 +221,17 @@ document.addEventListener("DOMContentLoaded", () => {
       },
 
       pagination: {
-        el: ".indications-swiper-pagination",
+        el: ".indicationses-swiper-pagination",
         clickable: true,
       },
 
       navigation: {
-        nextEl: ".indications-button-next",
-        prevEl: ".indications-button-prev",
+        nextEl: ".indicationses-button-next",
+        prevEl: ".indicationses-button-prev",
       },
 
       slidesPerView: "auto",
-      spaceBetween: 24,
+      spaceBetween: 16,
 
       breakpoints: {
         1280: {
