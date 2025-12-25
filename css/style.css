@@ -4978,6 +4978,12 @@ height: 32px;
   background: var(--colors-base-light-bg);
   position: relative;
   overflow: hidden;
+  transition: all 0.3s;
+}
+
+.how-works__content-item:hover {
+  background: var(--colors-base-white-100);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.10);
 }
 
 .how-works__content-item img {
@@ -5372,6 +5378,12 @@ height: 32px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: all 0.3s;
+}
+
+.why__left-grid--col-item:hover {
+  background: var(--colors-base-white-100);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.10);
 }
 
 .why__left-grid--col--img {
@@ -7599,8 +7611,13 @@ background: var(--colors-base-white-100, #FFF);
   background: var(--colors-base-light-bg);
   padding: 32px;
   position: relative;
-  overflow: hidden;
+  transition: all 0.3s;
 }
+
+.indicationses-swiper-slide-box:hover {
+  background: var(--colors-base-white-100);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.10);
+} 
 
 .indicationses-swiper-slide-box h3 {
   color: var(--colors-graphite-900);
@@ -7619,6 +7636,8 @@ background: var(--colors-base-white-100, #FFF);
   width: 100%;
   height: 100%;
   z-index: 1;
+  border-radius: 24px;
+  overflow: hidden;
 }
 
 .indicationses-swiper-slide-bg img {
@@ -8672,7 +8691,7 @@ background: var(--colors-base-white-100, #FFF);
 
   .footer .wrapper {
     max-width: 1176px;
-    gap: 64px;
+    gap: 44px;
   }
 
   .footer__center {
@@ -8691,6 +8710,7 @@ background: var(--colors-base-white-100, #FFF);
     gap: 96px;
     flex: 1 0 0;
     flex-direction: row;
+    margin-top: 10px;
   }
 
   .footer__bottom-nav {
@@ -9004,6 +9024,28 @@ background: var(--colors-base-white-100, #FFF);
     width: 512px;
     flex-shrink: 0;
     height: 814px;
+    object-position: left;
+  }
+
+  .indicationses-sliders-nav {
+    margin-top: 30px;
+  }
+
+  .indicationses-swiper-slide-box {
+    width: 276px;
+    height: 276px;
+  }
+
+  .indicationses-title h2 {
+    font-size: 60px;
+  }
+
+  .product-range__nested-title p {
+    font-size: 16px;
+  }
+
+  .how-works__content-list .product-range__nested-title {
+    margin-top: 40px;
   }
 
   .hero--fortox .hero-image-wrapper {
