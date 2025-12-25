@@ -2254,7 +2254,9 @@ height: 32px;
 }
 
 .product-range-button-next,
-.product-range-button-prev {
+.product-range-button-prev,
+.product-range-video-button-next,
+.product-range-video-button-prev {
   width: 42px;
   height: 42px;
   border-radius: 99px;
@@ -2269,35 +2271,46 @@ height: 32px;
 }
 
 .product-range-button-next:hover,
-.product-range-button-prev:hover {
+.product-range-button-prev:hover,
+.product-range-video-button-next:hover,
+.product-range-video-button-prev:hover {
   border: 1px solid var(--colors-red-medical-source);
   background: var(--colors-base-white-100);
 }
 
 .product-range-button-next:active,
-.product-range-button-prev:active {
+.product-range-button-prev:active,
+.product-range-video-button-next:active,
+.product-range-video-button-prev:active {
   border: 1px solid var(--colors-red-medical-source);
   background: var(--colors-base-white-100);
 }
 
 .product-range-button-next i:before,
-.product-range-button-prev i:before {
+.product-range-button-prev i:before,
+.product-range-video-button-next i:before,
+.product-range-video-button-prev i:before {
   font-size: 20px;
   color: #ddd;
   transition: all 0.3s;
 }
 
 .product-range-button-next:hover i:before,
-.product-range-button-prev:hover i:before {
+.product-range-button-prev:hover i:before,
+.product-range-video-button-next:hover i:before,
+.product-range-video-button-prev:hover i:before {
   color: #fa4549;
 }
 
 .product-range-button-next:active i:before,
-.product-range-button-prev:active i:before {
+.product-range-button-prev:active i:before,
+.product-range-video-button-next:active i:before,
+.product-range-video-button-prev:active i:before {
   color: #fa4549;
 }
 
-.product-range-pagination {
+.product-range-pagination,
+.product-range-video-pagination {
   display: flex;
   align-items: center;
   gap: 8px 4px;
@@ -2305,7 +2318,8 @@ height: 32px;
   justify-content: center;
 }
 
-.product-range-pagination .swiper-pagination-bullet {
+.product-range-pagination .swiper-pagination-bullet,
+.product-range-video-pagination .swiper-pagination-bullet {
   width: 30px;
   height: 3px;
   opacity: 0.5;
@@ -2314,17 +2328,20 @@ height: 32px;
   transition: all 0.3s;
 }
 
-.product-range-pagination .swiper-pagination-bullet:hover {
+.product-range-pagination .swiper-pagination-bullet:hover,
+.product-range-video-pagination .swiper-pagination-bullet:hover {
   opacity: 0.5;
   background: var(--colors-red-medical-source);
 }
 
-.product-range-pagination .swiper-pagination-bullet:active {
+.product-range-pagination .swiper-pagination-bullet:active,
+.product-range-video-pagination .swiper-pagination-bullet:active {
   background: var(--colors-red-medical-source);
   opacity: 1;
 }
 
-.product-range-pagination .swiper-pagination-bullet-active {
+.product-range-pagination .swiper-pagination-bullet-active,
+.product-range-video-pagination .swiper-pagination-bullet-active {
   background: var(--colors-red-medical-source);
   opacity: 1;
 }
@@ -2718,11 +2735,16 @@ height: 32px;
   gap: 16px;
 }
 
+.product-range__nested-swiper {
+  overflow: visible;
+}
+
 .col-left,
 .col-right {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-width: 100%;
 }
 
 .syringe-image {
@@ -4214,7 +4236,7 @@ height: 32px;
 .product-range__twac .product-range__swiper-slide img {
   width: 655px;
   height: 655px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .product-range__twac .product-range__body {
@@ -5725,9 +5747,13 @@ height: 32px;
   min-width: 700px;
 }
 
+.hero--appeex-cards {
+  overflow: hidden;
+}
+
 .hero--appeex-cards-swiper {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   padding: 32px 16px;
 }
 
@@ -5747,6 +5773,12 @@ height: 32px;
   z-index: 0;
   gap: 16px;
   padding: 24px;
+  transition: all 0.3s;
+}
+
+.hero--appeex-cards-item:hover {
+  background: var(--colors-base-white-100);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.10);
 }
 
 .hero--appeex-cards-item .hero--appeex-cards-item--img {
@@ -7739,6 +7771,240 @@ background: var(--colors-base-white-100, #FFF);
   gap: 24px;
 }
 
+#content-video-procedures.product-range__content--active {
+  margin-top: 70px;
+}
+
+#content-video-procedures .product-range__content-title h3 {
+  display: inline;
+}
+
+#content-video-procedures .product-range__content-title h3 .element {
+  display: inline-flex;
+}
+
+.product-range__video-swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.product-range__video-swiper .swiper-slide {
+  width: 256px;
+}
+
+.product-range__video-swiper .swiper-slide  .product__top-card {
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--colors-base-white-100);
+  width: 100%;
+}
+
+.advantages-sliders--appeex .advantages-slider-card{
+  padding: 26px 32px;
+  width: 256px;
+  height: 256px;
+}
+
+.advantages-sliders--appeex .advantages-swiper .swiper-slide {
+  width: 256px;
+  height: 256px;
+  min-width: 256px;
+  min-height: 256px;
+}
+
+.advantages-sliders--appeex .advantages-sliders-nav {
+  margin-top: 10px;
+}
+
+.composition--appex .clinician-comfort__title h2 {
+  display: inline;
+}
+
+.composition--appeex .clinician-comfort__title h2 .element {
+  display: inline-flex;
+}
+
+.composition--appeex .syringe-image img {
+width: 388px;
+    min-width: 388px;
+    height: 475.787px;
+    object-position: center bottom;
+    filter: none;
+    top: 30px;
+    aspect-ratio: 488 / 575.787;
+}
+
+.clinician-comfort.composition.composition--appeex {
+  overflow: visible;
+  background: url(../image/sectionbg.png);
+  background-repeat: no-repeat;
+    background-size: inherit;
+    background-position: 50% 70%;
+}
+
+.new-sliders--appeex {
+  padding: 32px 16px;
+  overflow: hidden;
+}
+
+.new-sliders--appeex-swiper {
+  max-width: 800px;
+  width: 100%;
+  overflow: visible;
+  margin: 0 auto;
+}
+
+.new-sliders--appeex-swiper .swiper-slide {
+  width: 276px !important;
+  height: 256px;
+}
+
+.new-sliders--appeex-swiper .new-sliders--appeex-slider-card{
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  background: var(--colors-base-light-bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  transition: all 0.3s;
+}
+
+.new-sliders--appeex-swiper .new-sliders--appeex-slider-card:hover {
+  background: var(--colors-base-white-100);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.10);
+}
+
+.new-sliders--appeex-swiper .new-sliders--appeex-slider-card h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: var(--colors-graphite-900);
+  text-overflow: ellipsis;
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.new-sliders--appeex-swiper .new-sliders--appeex-slider-card p {
+  color: var(--colors-graphite-700);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 130%; 
+  letter-spacing: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.new-sliders--appeex-swiper .new-sliders--appeex-slider-card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.new-sliders--appeex-swiper .new-sliders--appeex-slider-card-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.new-sliders--appeex-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  align-self: stretch;
+}
+
+.new-sliders--appeex-button-next,
+.new-sliders--appeex-button-prev {
+  width: 42px;
+  height: 42px;
+  border-radius: 99px;
+  border: 1px solid var(--colors-graphite-100);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.new-sliders--appeex-button-next:hover,
+.new-sliders--appeex-button-prev:hover {
+  border: 1px solid var(--colors-red-medical-source);
+  background: var(--colors-base-white-100);
+}
+
+.new-sliders--appeex-button-next:active,
+.new-sliders--appeex-button-prev:active {
+  border: 1px solid var(--colors-red-medical-source);
+  background: var(--colors-base-white-100);
+}
+
+.new-sliders--appeex-button-next i:before,
+.new-sliders--appeex-button-prev i:before {
+  font-size: 20px;
+  color: #ddd;
+  transition: all 0.3s;
+}
+
+.new-sliders--appeex-button-next:hover i:before,
+.new-sliders--appeex-button-prev:hover i:before {
+  color: #fa4549;
+}
+
+.new-sliders--appeex-button-next:active i:before,
+.new-sliders--appeex-button-prev:active i:before {
+  color: #fa4549;
+}
+
+.new-sliders--appeex-pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.new-sliders--appeex-pagination .swiper-pagination-bullet {
+  width: 30px;
+  height: 3px;
+  opacity: 0.5;
+  background: var(--colors-graphite-100);
+  border-radius: 0;
+  transition: all 0.3s;
+}
+
+.new-sliders--appeex-pagination .swiper-pagination-bullet:hover {
+  opacity: 0.5;
+  background: var(--colors-red-medical-source);
+}
+
+.new-sliders--appeex-pagination .swiper-pagination-bullet:active {
+  background: var(--colors-red-medical-source);
+  opacity: 1;
+}
+
+.new-sliders--appeex-pagination .swiper-pagination-bullet-active {
+  background: var(--colors-red-medical-source);
+  opacity: 1;
+}
+
+
 
 
 
@@ -7771,6 +8037,11 @@ background: var(--colors-base-white-100, #FFF);
   .syringe-container {
     padding-right: 312px;
   }
+
+  .col-left,
+.col-right  {
+  max-width: 500px;
+}
 
   .syringe-image {
     position: absolute;
@@ -9428,6 +9699,7 @@ background: var(--colors-base-white-100, #FFF);
   .hero--appeex.hero--fortox .hero-image-wrapper .hero-image img {
     width: 1176px;
     height: 950px;
+    object-position: center;
     flex-shrink: 0;
   }
 
@@ -9494,6 +9766,10 @@ background: var(--colors-base-white-100, #FFF);
 
   .why__appeex .why__right-accardion>p {
     margin-top: -36px;
+  }
+
+  .why__appeex {
+    padding-bottom: 96px;
   }
 
   .chemical-mediators {
@@ -10073,6 +10349,93 @@ height: 352px;
     .indicationses-swiper-slide-box h3 {
       font-size: 20px;
     }
+
+    .composition--appeex .info-block-svg {
+      right: -215.712px;
+      bottom: -58px;
+    }
+
+    .composition--appeex .info-block-svg2 {
+      right: -221.5px;
+      top: -10px;
+    }
+
+     .composition--appeex .info-block-svg3{
+        left: -192.5px;
+        bottom: -60px;
+     }
+
+      .composition--appeex .info-block-svg4{
+        left: -192.5px;
+        top: -45px;
+      }
+
+      .new-sliders--appeex {
+        padding: 64px 52px;
+      }
+
+      .new-sliders--appeex-swiper {
+        max-width: 1176px;
+      }
+
+      .new-sliders--appeex-swiper .new-sliders--appeex-slider-card h3 {
+        font-size: 20px;
+      }
+
+      .new-sliders--appeex-nav {
+        margin-top: 33px;
+      }
+      
+      .new-sliders--appeex-swiper .new-sliders--appeex-slider-card {
+        padding: 40px 32px;
+      }
+
+      .new-sliders--appeex-swiper .swiper-slide {
+        width: 376px !important;
+        height: 376px;
+        margin-right: 24px !important;
+      }
+
+          .new-sliders--appeex-swiper .swiper-slide:nth-last-of-type(1) {
+            margin-right: 0 !important;
+          }
+
+      .composition--appeex .syringe-image img {
+        min-width: 540px;
+        top: 45px;
+      }
+
+      .product-range__nested-swiper {
+        overflow: hidden;
+      }
+
+      .advantages-sliders--appeex .advantages-slider-card {
+        width: 376px;
+        height: 376px;
+      }
+
+      .advantages-sliders--appeex .advantages-slider-card p {
+        font-size: 14px;
+      }
+
+      .clinician-comfort.composition.composition--appeex{
+        padding-top: 122px;
+      }
+
+      .composition--appeex .col-left {
+        padding-top: 0;
+        gap: 196px;
+      }
+
+      .composition--appeex .info-title {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .composition--appeex .info-text {
+        font-size: 14px;
+      }
+
 }
 
 @media (max-width: 1279px) {

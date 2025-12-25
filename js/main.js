@@ -265,6 +265,60 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
+  // Video Procedures Swiper
+  new Swiper(".product-range__video-swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 24,
+    observer: true,
+    observeParents: true,
+    mousewheel: {
+      forceToAxis: true,
+    },
+    navigation: {
+      nextEl: ".product-range-video-button-next",
+      prevEl: ".product-range-video-button-prev",
+    },
+    pagination: {
+      el: ".product-range-video-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      1280: {
+        slidesPerView: 3,
+        spaceBetween: 32,
+      },
+    },
+  });
+
+  // New Sliders Appeex Swiper
+  new Swiper(".new-sliders--appeex-swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    observer: true,
+    observeParents: true,
+    mousewheel: {
+      forceToAxis: true,
+    },
+    navigation: {
+      nextEl: ".new-sliders--appeex-button-next",
+      prevEl: ".new-sliders--appeex-button-prev",
+    },
+    pagination: {
+      el: ".new-sliders--appeex-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+      1280: {
+        slidesPerView: 3,
+        spaceBetween: 32,
+      },
+    },
+  });
+
   // Initialize Fancybox (if not auto-initialized)
   if (typeof Fancybox !== "undefined") {
     Fancybox.bind("[data-fancybox]", {
@@ -275,6 +329,24 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to update active content
   function updateContent(targetTab) {
     const activeContent = document.getElementById(`content-${targetTab}`);
+    const swiperContainer = document.querySelector(".product-range__swiper");
+
+    // Hide swiper if video-procedures is active
+    if (targetTab === "video-procedures") {
+      if (swiperContainer) {
+        swiperContainer.style.opacity = "0";
+        swiperContainer.style.height = "0";
+        swiperContainer.style.visibility = "hidden";
+        swiperContainer.style.marginTop = "0";
+      }
+    } else {
+      if (swiperContainer) {
+        swiperContainer.style.opacity = "1";
+        swiperContainer.style.height = "";
+        swiperContainer.style.visibility = "visible";
+        swiperContainer.style.marginTop = "";
+      }
+    }
 
     // 1. Сначала показываем новый контент, чтобы избежать схлопывания высоты страницы
     if (activeContent) {
@@ -369,7 +441,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Find the index of the first slide that matches this tab
       const slides = swiper.slides;
-      let targetIndex = 0;
+      let targetIndex = -1;
 
       for (let i = 0; i < slides.length; i++) {
         if (slides[i].getAttribute("data-tab") === targetTab) {
@@ -378,8 +450,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      swiper.slideTo(targetIndex);
-      // Content update is handled by the slideChange event above
+      if (targetIndex !== -1) {
+        swiper.slideTo(targetIndex);
+        // Content update is handled by the slideChange event
+      } else {
+        // If no slide found (e.g. video-procedures), update content manually
+        tabs.forEach((t) => t.classList.remove("product-range__tab--active"));
+        tab.classList.add("product-range__tab--active");
+        updateContent(targetTab);
+      }
     });
   });
 });
@@ -873,6 +952,9 @@ document.addEventListener("DOMContentLoaded", () => {
         loop: false,
         observer: true,
         observeParents: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
         navigation: {
           nextEl: ".hero--appeex-cards-button-next",
           prevEl: ".hero--appeex-cards-button-prev",
@@ -935,7 +1017,7 @@ document.addEventListener(
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
       // Check if the hover target is inside a slider
       const isSlider = e.target.closest(
-        ".swiper, .news__cards, .advantages-swiper, .indications-swiper, .product-range__nested-swiper, .product-range__swiper"
+        ".swiper, .news__cards, .advantages-swiper, .indications-swiper, .product-range__nested-swiper, .product-range__swiper, .new-sliders--appeex-swiper"
       );
 
       if (isSlider) {
