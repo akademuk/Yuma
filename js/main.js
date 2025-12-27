@@ -835,6 +835,9 @@ document.addEventListener("DOMContentLoaded", () => {
         loop: false,
         observer: true, // Fix for hidden tabs initialization
         observeParents: true, // Fix for hidden tabs initialization
+        mousewheel: {
+          forceToAxis: true,
+        },
         navigation: {
           nextEl: ".section-paralax-button-next",
           prevEl: ".section-paralax-button-prev",
@@ -1036,3 +1039,76 @@ document.addEventListener(
   },
   { passive: false }
 );
+
+document.addEventListener("DOMContentLoaded", function () {
+  const twacTabs = document.querySelectorAll(".section-twacs-tabsic-tab");
+  const twacContents = document.querySelectorAll(".section-twacs-tabsic-content");
+
+  if (twacTabs.length > 0 && twacContents.length > 0) {
+    twacTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.getAttribute("data-tab");
+
+        // Remove active class from all tabs
+        twacTabs.forEach((t) => t.classList.remove("section-twacs-tabsic-tab--active"));
+        // Add active class to clicked tab
+        tab.classList.add("section-twacs-tabsic-tab--active");
+
+        // Hide all contents and show the target one
+        twacContents.forEach((content) => {
+          content.classList.remove("section-twacs-tabsic-content--active");
+          if (content.id === targetId) {
+            content.classList.add("section-twacs-tabsic-content--active");
+          }
+        });
+      });
+    });
+  }
+
+  // Areas Swipers
+  const areasSwipers = [
+    {
+      selector: ".areas-swiper1",
+      next: ".areas-swiper1-button-next",
+      prev: ".areas-swiper1-button-prev",
+      pagination: ".areas-swiper1-pagination",
+    },
+    {
+      selector: ".areas-swiper2",
+      next: ".areas-swiper2-button-next",
+      prev: ".areas-swiper2-button-prev",
+      pagination: ".areas-swiper2-pagination",
+    },
+    {
+      selector: ".areas-swiper3",
+      next: ".areas-swiper3-button-next",
+      prev: ".areas-swiper3-button-prev",
+      pagination: ".areas-swiper3-pagination",
+    },
+  ];
+
+  areasSwipers.forEach((config) => {
+    if (document.querySelector(config.selector)) {
+      new Swiper(config.selector, {
+        slidesPerView: "auto",
+        spaceBetween: 16,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        navigation: {
+          nextEl: config.next,
+          prevEl: config.prev,
+        },
+        pagination: {
+          el: config.pagination,
+          clickable: true,
+        },
+        breakpoints: {
+          1280: {
+            spaceBetween: 24,
+          },
+        },
+      });
+    }
+  });
+});
