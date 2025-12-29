@@ -220,8 +220,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", initAdvantagesSwiper);
   }
 
-  if (document.querySelector(".indicationses-swiper")) {
-    const swiper = new Swiper(".indicationses-swiper", {
+  if (document.querySelector(".indications-swiper")) {
+    const swiper = new Swiper(".indications-swiper", {
       loop: false,
       speed: 600,
       mousewheel: {
@@ -229,13 +229,13 @@ document.addEventListener("DOMContentLoaded", () => {
       },
 
       pagination: {
-        el: ".indicationses-swiper-pagination",
+        el: ".indications-swiper-pagination",
         clickable: true,
       },
 
       navigation: {
-        nextEl: ".indicationses-button-next",
-        prevEl: ".indicationses-button-prev",
+        nextEl: ".indications-button-next",
+        prevEl: ".indications-button-prev",
       },
 
       slidesPerView: "auto",
@@ -1111,4 +1111,20 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+
+  // Why Choose Us Swiper
+  if (document.querySelector(".why-choose-us-swiper")) {
+    new Swiper(".why-choose-us-swiper", {
+      slidesPerView: 'auto',
+      spaceBetween: 16,
+      navigation: {
+        nextEl: ".why-choose-us-button-next",
+        prevEl: ".why-choose-us-button-prev",
+      },
+      pagination: {
+        el: ".why-choose-us-swiper-pagination",
+        clickable: true,
+      },
+    });
+  }
 });
