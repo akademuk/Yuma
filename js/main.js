@@ -334,68 +334,58 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Function to update active content
-  function updateContent(targetTab) {
-    const activeContent = document.getElementById(`content-${targetTab}`);
-    const swiperContainer = document.querySelector(".product-range__swiper");
+  // Refactored Product Range Logic to handle multiple sections
+  const productRangeSections = document.querySelectorAll(".product-range");
 
-    // Hide swiper if video-procedures is active
-    if (targetTab === "video-procedures") {
-      if (swiperContainer) {
-        swiperContainer.style.opacity = "0";
-        swiperContainer.style.height = "0";
-        swiperContainer.style.visibility = "hidden";
-        swiperContainer.style.marginTop = "0";
+  productRangeSections.forEach((section) => {
+    const swiperElement = section.querySelector(".product-range__swiper");
+    const sectionTabs = section.querySelectorAll(".product-range__tab");
+    const sectionContents = section.querySelectorAll(".product-range__content");
+
+    if (!swiperElement) return;
+
+    let swiper;
+
+    const onSlideChange = function () {
+      const activeSlide = this.slides[this.activeIndex];
+      const activeTabAttr = activeSlide.getAttribute("data-tab");
+
+      // Update tabs
+      sectionTabs.forEach((t) => t.classList.remove("product-range__tab--active"));
+      const activeTabElement = section.querySelector(
+        `.product-range__tab[data-tab="${activeTabAttr}"]`
+      );
+      if (activeTabElement) {
+        activeTabElement.classList.add("product-range__tab--active");
       }
-    } else {
-      if (swiperContainer) {
-        swiperContainer.style.opacity = "1";
-        swiperContainer.style.height = "";
-        swiperContainer.style.visibility = "visible";
-        swiperContainer.style.marginTop = "";
+
+      // Update content
+      sectionContents.forEach((c) => c.classList.remove("product-range__content--active"));
+
+      // Find content by ID suffix matching data-tab
+      const activeContent = Array.from(sectionContents).find(
+        (c) => c.id === `content-${activeTabAttr}`
+      );
+
+      if (activeContent) {
+        activeContent.classList.add("product-range__content--active");
       }
-    }
 
-    // 1. Сначала показываем новый контент, чтобы избежать схлопывания высоты страницы
-    if (activeContent) {
-      activeContent.classList.add("product-range__content--active");
-    }
-
-    // 2. Затем скрываем остальные
-    contents.forEach((c) => {
-      if (c !== activeContent) {
-        c.classList.remove("product-range__content--active");
+      // Visibility logic
+      if (activeTabAttr === "video-procedures") {
+        swiperElement.style.opacity = "0";
+        swiperElement.style.height = "0";
+        swiperElement.style.visibility = "hidden";
+        swiperElement.style.marginTop = "0";
+      } else {
+        swiperElement.style.opacity = "1";
+        swiperElement.style.height = "";
+        swiperElement.style.visibility = "visible";
+        swiperElement.style.marginTop = "";
       }
-    });
-  }
+    };
 
-  // Initialize Main Swiper
-  let swiper;
-
-  const onSlideChange = function () {
-    // Update tabs and content when the slide changes
-    const activeSlide = this.slides[this.activeIndex];
-    const activeTabAttr = activeSlide.getAttribute("data-tab");
-
-    tabs.forEach((t) => t.classList.remove("product-range__tab--active"));
-    const activeTabElement = document.querySelector(
-      `.product-range__tab[data-tab="${activeTabAttr}"]`
-    );
-    if (activeTabElement) {
-      activeTabElement.classList.add("product-range__tab--active");
-    }
-
-    // Update content area
-    updateContent(activeTabAttr);
-  };
-
-  if (document.querySelector(".product-range__twac")) {
-    // TwAc Swiper (Fade Effect)
-    swiper = new Swiper(".product-range__swiper", {
-      effect: "fade",
-      fadeEffect: {
-        crossFade: true,
-      },
+    let config = {
       grabCursor: true,
       slideToClickedSlide: true,
       observer: true,
@@ -408,67 +398,80 @@ document.addEventListener("DOMContentLoaded", function () {
       on: {
         slideChange: onSlideChange,
       },
-    });
-  } else {
-    // Default Swiper (Cards Effect)
-    swiper = new Swiper(".product-range__swiper", {
-      effect: "cards",
-      grabCursor: true,
-      slideToClickedSlide: true,
-      observer: true,
-      observeParents: true,
-      mousewheel: {
-        forceToAxis: true,
-      },
-      wrapperClass: "product-range__swiper-wrapper",
-      slideClass: "product-range__swiper-slide",
-      cardsEffect: {
-        rotate: false, // This removes the rotation
-        perSlideOffset: 25, // Increased to make cards stick out more (wider stack)
-        perSlideRotate: 0, // Ensure per-slide rotation is 0
-        slideShadows: true, // Enabled shadows
-      },
-      breakpoints: {
+    };
+
+    // Determine effect based on class
+    if (section.classList.contains("product-range__twac")) {
+      config.effect = "fade";
+      config.fadeEffect = {
+        crossFade: true,
+      };
+    } else {
+      config.effect = "cards";
+      config.cardsEffect = {
+        rotate: false,
+        perSlideOffset: 25,
+        perSlideRotate: 0,
+        slideShadows: true,
+      };
+      config.breakpoints = {
         1280: {
           cardsEffect: {
-            perSlideOffset: 15, // Уменьшаем отступ на десктопе, чтобы слайды были ближе
+            perSlideOffset: 15,
           },
         },
-      },
-      on: {
-        slideChange: onSlideChange,
-      },
-    });
-  }
+      };
+    }
 
-  // Tab switching logic
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetTab = tab.getAttribute("data-tab");
+    swiper = new Swiper(swiperElement, config);
 
-      // Find the index of the first slide that matches this tab
-      const slides = swiper.slides;
-      let targetIndex = -1;
+    // Tab click listeners
+    sectionTabs.forEach((tab) => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetTab = tab.getAttribute("data-tab");
 
-      for (let i = 0; i < slides.length; i++) {
-        if (slides[i].getAttribute("data-tab") === targetTab) {
-          targetIndex = i;
-          break;
+        const slides = swiper.slides;
+        let targetIndex = -1;
+
+        for (let i = 0; i < slides.length; i++) {
+          if (slides[i].getAttribute("data-tab") === targetTab) {
+            targetIndex = i;
+            break;
+          }
         }
-      }
 
-      if (targetIndex !== -1) {
-        swiper.slideTo(targetIndex);
-        // Content update is handled by the slideChange event
-      } else {
-        // If no slide found (e.g. video-procedures), update content manually
-        tabs.forEach((t) => t.classList.remove("product-range__tab--active"));
-        tab.classList.add("product-range__tab--active");
-        updateContent(targetTab);
-      }
+        if (targetIndex !== -1) {
+          swiper.slideTo(targetIndex);
+        } else {
+          // Manual update
+          sectionTabs.forEach((t) => t.classList.remove("product-range__tab--active"));
+          tab.classList.add("product-range__tab--active");
+
+          sectionContents.forEach((c) => c.classList.remove("product-range__content--active"));
+          const activeContent = Array.from(sectionContents).find(
+            (c) => c.id === `content-${targetTab}`
+          );
+          if (activeContent) {
+            activeContent.classList.add("product-range__content--active");
+          }
+
+          if (targetTab === "video-procedures") {
+            swiperElement.style.opacity = "0";
+            swiperElement.style.height = "0";
+            swiperElement.style.visibility = "hidden";
+            swiperElement.style.marginTop = "0";
+          } else {
+            swiperElement.style.opacity = "1";
+            swiperElement.style.height = "";
+            swiperElement.style.visibility = "visible";
+            swiperElement.style.marginTop = "";
+          }
+        }
+      });
     });
   });
+
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1125,6 +1128,11 @@ document.addEventListener("DOMContentLoaded", function () {
         el: ".why-choose-us-swiper-pagination",
         clickable: true,
       },
+      breakpoints: {
+          1280: {
+            spaceBetween: 24,
+          },
+        },
     });
   }
 });
