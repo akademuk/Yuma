@@ -1,17 +1,1 @@
-<svg width="1325" height="1035" viewBox="0 0 1325 1035" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g style="mix-blend-mode:screen" filter="url(#filter0_f_210_3625)">
-<path d="M807.213 352.95C422.79 444.633 218.418 651.585 164.284 743.6C72.3313 938.261 -51.731 1248.26 187.643 930.953C486.861 534.323 784.966 583.154 1455.7 412.743C1992.29 276.414 1843.17 113.444 1701.53 49L1394.53 49C1358.93 112.115 1191.64 261.266 807.213 352.95Z" fill="url(#paint0_radial_210_3625)"/>
-</g>
-<defs>
-<filter id="filter0_f_210_3625" x="0" y="0" width="1883.28" height="1116.32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="24.5" result="effect1_foregroundBlur_210_3625"/>
-</filter>
-<radialGradient id="paint0_radial_210_3625" cx="0" cy="0" r="1" gradientTransform="matrix(-608.369 321.23 -563.168 -348.46 1227.27 330.551)" gradientUnits="userSpaceOnUse">
-<stop stop-color="#63F3F4"/>
-<stop offset="1" stop-color="#484EB7" stop-opacity="0"/>
-<stop offset="1" stop-color="white"/>
-</radialGradient>
-</defs>
-</svg>
+<svg fill="none" height="1035" viewBox="0 0 1325 1035" width="1325" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><filter id="a" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="1116.32" width="1883.28" x="0" y="0"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_210_3625" stdDeviation="24.5"/></filter><radialGradient id="b" cx="0" cy="0" gradientTransform="matrix(-608.369 321.23 -563.168 -348.46 1227.27 330.551)" gradientUnits="userSpaceOnUse" r="1"><stop offset="0" stop-color="#63f3f4"/><stop offset="1" stop-color="#484eb7" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></radialGradient><g filter="url(#a)"><path d="m807.213 352.95c-384.423 91.683-588.795 298.635-642.929 390.65-91.9527 194.661-216.015 504.66 23.359 187.353 299.218-396.63 597.323-347.799 1268.057-518.21 536.59-136.329 387.47-299.299 245.83-363.743h-307c-35.6 63.115-202.89 212.266-587.317 303.95z" fill="url(#b)"/></g></svg>

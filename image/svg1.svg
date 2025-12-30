@@ -1,17 +1,1 @@
-<svg width="1597" height="986" viewBox="0 0 1597 986" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_f_210_3623)">
-<path d="M1095.67 311.579C694.912 310.994 435.809 464.64 356.352 541.536C210.221 709.484 -0.721829 982.165 324.557 729.31C731.156 413.241 1007.03 530.399 1709.31 521.258C2271.14 513.944 2173.46 320.517 2054.39 224.718L1755.64 153C1702.64 206.104 1496.44 312.164 1095.67 311.579Z" fill="url(#paint0_linear_210_3623)" fill-opacity="0.75"/>
-</g>
-<defs>
-<filter id="filter0_f_210_3623" x="0.000244141" y="0" width="2299.17" height="985.075" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="76.5" result="effect1_foregroundBlur_210_3623"/>
-</filter>
-<linearGradient id="paint0_linear_210_3623" x1="2196.44" y1="217.435" x2="818.496" y2="1509.13" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FA4549"/>
-<stop offset="1" stop-color="#FA4549" stop-opacity="0"/>
-<stop offset="1" stop-color="#FA4549"/>
-</linearGradient>
-</defs>
-</svg>
+<svg fill="none" height="986" viewBox="0 0 1597 986" width="1597" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><filter id="a" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="985.075" width="2299.17" x=".000244" y="0"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_210_3623" stdDeviation="76.5"/></filter><linearGradient id="b" gradientUnits="userSpaceOnUse" x1="2196.44" x2="818.496" y1="217.435" y2="1509.13"><stop offset="0" stop-color="#fa4549"/><stop offset="1" stop-color="#fa4549" stop-opacity="0"/><stop offset="1" stop-color="#fa4549"/></linearGradient><g filter="url(#a)"><path d="m1095.67 311.579c-400.758-.585-659.861 153.061-739.318 229.957-146.131 167.948-357.073829 440.629-31.795 187.774 406.599-316.069 682.473-198.911 1384.753-208.052 561.83-7.314 464.15-200.741 345.08-296.54l-298.75-71.718c-53 53.104-259.2 159.164-659.97 158.579z" fill="url(#b)" fill-opacity=".75"/></g></svg>
