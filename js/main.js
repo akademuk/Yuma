@@ -1149,6 +1149,9 @@ document.addEventListener("DOMContentLoaded", function () {
     new Swiper(".why-choose-us-swiper", {
       slidesPerView: 'auto',
       spaceBetween: 16,
+      mousewheel: {
+        forceToAxis: true,
+      },
       navigation: {
         nextEl: ".why-choose-us-button-next",
         prevEl: ".why-choose-us-button-prev",

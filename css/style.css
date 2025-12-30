@@ -4684,7 +4684,7 @@ select {
   font-size: 24px;
 }
 
-.accordion__title span {
+.accordion__title > span {
   width: 40px;
   height: 40px;
   flex-shrink: 0;
@@ -9660,12 +9660,27 @@ select {
   gap: 32px;
 }
 
+.accordion__title h3 {
+  display: inline;
+}
 
+.accordion__title h3 .element {
+  display: inline-flex;
+}
 
+.why--about2 .wrapper{
+  gap: 33px;
+}
 
+.why--about2 .why__right-accardions--twac {
+  gap: 22px;
+}
 
-
-
+.home-maps-about .wrapper img{
+  content: url(../image/map-about-mob.png);
+  object-position: left center;
+  height: 450px;
+}
 
 
 
@@ -9702,6 +9717,12 @@ select {
   .home-maps .wrapper img {
     object-position: left center;
     content: none;
+    object-fit: contain;
+  }
+
+    .home-maps-about .wrapper img {
+    object-position: left center;
+    content: url(../image/map-about-mob.png);
     object-fit: contain;
   }
 }
@@ -12572,6 +12593,33 @@ select {
   .header--home {
     background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(12px);
+  }
+
+  .why--about2 .why__right-accardion {
+    margin-top: 0;
+    gap: 32px;
+  }
+
+  .why--about2 .why__right-accardions--twac {
+    gap: 15px;
+  }
+
+  .home-maps-about .wrapper img {
+    content: none;
+    height: 640px;
+    top: 0;
+    left: 0;
+    inset: 0;
+    transform: none;
+    position: static;
+  }
+
+  .why--about2 {
+    padding-bottom: 96px;
+  }
+
+  .home-maps-about .wrapper {
+    padding: 0;
   }
 }
 
