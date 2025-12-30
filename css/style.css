@@ -909,11 +909,13 @@ select {
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .mobile-menu.is-active {
   transform: translateY(0);
   top: 70px;
+  height: calc(100vh - 70px);
 }
 
 .mobile-menu__header {
@@ -958,6 +960,8 @@ select {
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .mobile-menu__list {
@@ -4645,6 +4649,7 @@ select {
 
 .accordion__item {
   display: flex;
+  width: 100%;
   flex-direction: column;
   padding: 16px;
   border-radius: 4px;
@@ -7841,7 +7846,7 @@ select {
 }
 
 .clinician-comfort.composition.composition--appeex {
-  overflow: visible;
+  overflow: hidden;
   background: url(../image/sectionbg.png);
   background-repeat: no-repeat;
   background-size: inherit;
@@ -9485,6 +9490,200 @@ select {
 .our-commitment2 .our-commitment__title {
   max-width: 476px;
 }
+
+.our-companys-advantages {
+  padding: 48px 16px;
+  overflow: hidden;
+}
+
+.our-companys-advantages .wrapper {
+  display: flex;
+  max-width: 800px;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  align-self: stretch;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.our-companys-advantages h2 {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 29px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.our-companys-advantages-swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.our-companys-advantages-swiper .swiper-slide {
+  width: 256px;
+  height: 256px;
+}
+
+.our-companys-advantages-swiper-slide-content {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 0 0;
+  border-radius: 24px;
+  background: var(--colors-base-light-bg);
+  width: 100%;
+  height: 100%;
+}
+
+.our-companys-advantages-swiper-slide-content h3 {
+  color: var(--colors-graphite-900);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+}
+
+.our-companys-advantages-swiper-slide-content p {
+  color: var(--colors-graphite-700);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+}
+
+.our-companys-advantages-nav {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-companys-advantages-button-prev,
+.our-companys-advantages-button-next {
+  width: 42px;
+  height: 42px;
+  border-radius: 99px;
+  border: 1px solid var(--colors-graphite-100);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.our-companys-advantages-button-next:hover,
+.our-companys-advantages-button-prev:hover {
+  border: 1px solid var(--colors-red-medical-source);
+  background: var(--colors-base-white-100);
+}
+
+.our-companys-advantages-button-next:active,
+.our-companys-advantages-button-prev:active {
+  border: 1px solid var(--colors-red-medical-source);
+  background: var(--colors-base-white-100);
+}
+
+.our-companys-advantages-button-next i:before,
+.our-companys-advantages-button-prev i:before {
+  font-size: 20px;
+  color: #ddd;
+  transition: all 0.3s;
+}
+.our-companys-advantages-button-next:hover i:before,
+.our-companys-advantages-button-prev:hover i:before {
+  color: #fa4549;
+}
+.our-companys-advantages-button-next:active i:before,
+.our-companys-advantages-button-prev:active i:before {
+  color: #fa4549;
+}
+
+.our-companys-advantages-button-prev i:before {
+  font-size: 20px;
+  color: #ddd;
+  transition: all 0.3s;
+}
+
+.our-companys-advantages-button-next:hover i:before,
+.our-companys-advantages-button-prev:hover i:before {
+  color: #fa4549;
+}
+
+.our-companys-advantages-button-next:active i:before,
+.our-companys-advantages-button-prev:active i:before {
+  color: #fa4549;
+}
+
+.our-companys-advantages-swiper-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px 4px;
+  flex-wrap: wrap;
+  position: static;
+  justify-content: center;
+}
+
+.our-companys-advantages-swiper-pagination .swiper-pagination-bullet {
+  width: 30px;
+  height: 3px;
+  opacity: 0.5;
+  background: #ddd;
+  border-radius: 0;
+  transition: all 0.3s;
+}
+
+.our-companys-advantages-swiper-pagination .swiper-pagination-bullet:hover {
+  opacity: 0.5;
+  background: var(--colors-red-medical-source);
+}
+
+.our-companys-advantages-swiper-pagination .swiper-pagination-bullet:active {
+  background: var(--colors-red-medical-source);
+  opacity: 1;
+}
+
+.our-companys-advantages-swiper-pagination .swiper-pagination-bullet-active {
+  background: var(--colors-red-medical-source);
+  opacity: 1;
+}
+
+.about--fortox .wrapper {
+  gap: 32px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12342,6 +12541,37 @@ select {
 
   .our-commitment2 .our-commitment__title {
     gap: 14px;
+  }
+
+  .our-companys-advantages {
+    padding: 64px 52px;
+  }
+
+  .our-companys-advantages .wrapper {
+    max-width: 1176px;
+    gap: 48px;
+  }
+
+  .our-companys-advantages h2 {
+    font-size: 34px;
+  }
+
+  .our-companys-advantages-swiper .swiper-slide {
+    width: 276px;
+    height: 276px;
+  }
+
+  .our-companys-advantages-swiper-slide-content h3 {
+    font-size: 20px;
+  }
+
+  .our-companys-advantages-swiper-slide-content p {
+    font-size: 16px;
+  }
+
+  .header--home {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
   }
 }
 

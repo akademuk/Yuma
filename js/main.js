@@ -248,6 +248,35 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   }
+
+  if (document.querySelector(".indicationses-swiper")) {
+    new Swiper(".indicationses-swiper", {
+      loop: false,
+      speed: 600,
+      mousewheel: {
+        forceToAxis: true,
+      },
+
+      pagination: {
+        el: ".indicationses-swiper-pagination",
+        clickable: true,
+      },
+
+      navigation: {
+        nextEl: ".indicationses-button-next",
+        prevEl: ".indicationses-button-prev",
+      },
+
+      slidesPerView: "auto",
+      spaceBetween: 16,
+
+      breakpoints: {
+        1280: {
+          spaceBetween: 24,
+        },
+      },
+    });
+  }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1133,6 +1162,30 @@ document.addEventListener("DOMContentLoaded", function () {
             spaceBetween: 24,
           },
         },
+    });
+  }
+
+  // Our Company's Advantages Swiper
+  if (document.querySelector(".our-companys-advantages-swiper")) {
+    new Swiper(".our-companys-advantages-swiper", {
+      slidesPerView: "auto",
+      spaceBetween: 16,
+      mousewheel: {
+        forceToAxis: true,
+      },
+      navigation: {
+        nextEl: ".our-companys-advantages-button-next",
+        prevEl: ".our-companys-advantages-button-prev",
+      },
+      pagination: {
+        el: ".our-companys-advantages-swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        1280: {
+          spaceBetween: 24,
+        },
+      },
     });
   }
 });
