@@ -421,6 +421,8 @@ document.addEventListener("DOMContentLoaded", function () {
       observeParents: true,
       mousewheel: {
         forceToAxis: true,
+        thresholdDelta: 50,
+        sensitivity: 0.5,
       },
       wrapperClass: "product-range__swiper-wrapper",
       slideClass: "product-range__swiper-slide",
