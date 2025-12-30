@@ -12435,6 +12435,7 @@ select {
 
   .about-yuma-bottom {
     flex-direction: row-reverse;
+    max-width: 800px;
   }
 
   .about-yuma-bottom-image {
