@@ -7488,12 +7488,11 @@ select {
   width: calc(1176px + 32px);
   margin: 0 auto;
   object-fit: cover;
-  object-position: 33% center;
+  object-position: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  content: url(../image/home-maps-mob.png);
 }
 
 .cta--home .cta__wrapper-left ul {
@@ -9676,11 +9675,6 @@ select {
   gap: 22px;
 }
 
-.home-maps-about .wrapper img{
-  content: url(../image/map-about-mob.png);
-  object-position: left center;
-  height: 450px;
-}
 
 
 
@@ -9711,21 +9705,6 @@ select {
 
 
 
-
-
-@media (min-width: 800px) {
-  .home-maps .wrapper img {
-    object-position: left center;
-    content: none;
-    object-fit: contain;
-  }
-
-    .home-maps-about .wrapper img {
-    object-position: left center;
-    content: url(../image/map-about-mob.png);
-    object-fit: contain;
-  }
-}
 
 
 
@@ -12474,7 +12453,7 @@ select {
   .about-yuma-photo {
     width: 953.603px;
     height: 656.3px;
-    left: auto;
+    left: 50%;
     right: 0;
   }
 
@@ -12558,6 +12537,7 @@ select {
   .product-range--about.product-range--home.product-range__twac .product-range__swiper {
     height: auto;
     max-height: 476px;
+    overflow: visible;
   }
 
   .our-commitment2 .our-commitment__title {
@@ -12760,4 +12740,19 @@ select {
 .product-range__nested-swiper,
 .product-range__swiper {
   overscroll-behavior-x: none;
+}
+
+@media (max-width: 375px) {
+  .why__left h2 {
+    font-size: 50px;
+  }
+}
+
+
+.cta {
+  display: none !important;
+}
+
+.footer {
+  margin-top: 0 !important;
 }
