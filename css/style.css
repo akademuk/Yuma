@@ -4121,6 +4121,8 @@ select {
 .about__twac-wrapper .about__video video {
   height: 412px;
   width: 100%;
+  transform: scale(1.01);
+  transform-origin: bottom;
 }
 
 .about__twac-wrapper {
