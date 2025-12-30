@@ -1227,6 +1227,7 @@ select {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+  transform: scale(1.01);
 }
 
 .about__body-col {
