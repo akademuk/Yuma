@@ -1227,7 +1227,6 @@ select {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  transform: scale(1.01);
 }
 
 .about__body-col {
@@ -4122,8 +4121,6 @@ select {
 .about__twac-wrapper .about__video video {
   height: 412px;
   width: 100%;
-  transform: scale(1.01);
-  transform-origin: bottom;
 }
 
 .about__twac-wrapper {
@@ -11603,8 +11600,9 @@ select {
     gap: 24px;
     min-width: auto;  
     /* overflow: visible; */
-        margin: 0 auto;
-        width: auto;
+    margin: 0;
+    
+    width: 100%;
   }
 
   .box-icons-item-svg {
