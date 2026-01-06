@@ -9676,37 +9676,194 @@ select {
   gap: 22px;
 }
 
+.contact-hero .error-404__content{
+  padding: 8px;
+  position: relative;
+  z-index: 2;
+}
 
+.contact-hero {
+  padding-top: 110px;
+  position: relative;
+  padding-bottom: 30px;
+}
 
+.contact-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
 
+.contact-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
+.breadcrumbs--global {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 8px 16px;
+}
 
+.breadcrumbs--global  .breadcrumbs-item {
+  padding: 16px;
+}
 
+.contact-main {
+  padding: 48px 16px;
+}
 
+.contact-main .wrapper{
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+}
 
+.contact-main-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  align-self: stretch;
+}
 
+.contact-main-left-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+}
 
+.contact-main-left-title h2 {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 29px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+}
 
+.contact-main-left-title p {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size:  16px;
+  font-weight: 400;
+  line-height: 130%; 
+  letter-spacing:0 ;
+}
 
+.contact-main-left-info {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 24px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
 
+.contact-main-left-titles{
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 24px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
 
+.contact-main-left-titles h3 {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 130%;
+  letter-spacing: 0;
+  display: flex;
+  min-width: 256px;
+  align-items: center;
+  flex: 1 0 0;
+}
 
+.contact-main-left-titles h3 img {
+  width: 40px;
+  height: 40px;
+  object-fit: none;
+}
 
+.contact-main-left-box {
+  display: flex;
+  min-width: 256px;
+  padding-left: 21px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  flex: 1 0 0;
+  border-left: 4px solid var(--colors-red-medical-source);
+}
 
+.contact-main-left-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  align-self: stretch;
+}
 
+.contact-main-left-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+}
 
+.contact-main-left-link {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+}
 
+.contact-main-left-item span {
+  color: var(--colors-graphite-700);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+}
 
+.contact-main-left-item strong {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+}
 
+.contact-main-right {
+  display: flex;
+}
 
-
-
-
-
-
-
-
-
+.contact-main-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
 
 
 
@@ -12600,6 +12757,64 @@ select {
 
   .home-maps-about .wrapper {
     padding: 0;
+  }
+
+  .breadcrumbs--global {
+    padding: 12px 0;
+    max-width: 1540px;
+  }
+
+  .contact-main {
+    padding: 96px 52px;
+  }
+
+  .contact-main .wrapper {
+    max-width: 1176px;
+    gap: 124px;
+    flex-direction: row;
+  }
+
+  .contact-main-right {
+    width: 526px;
+    height: 476px;
+    flex-shrink: 0;
+  }
+
+  .contact-main-left-title h2 {
+    font-size: 34px;
+  }
+
+  .contact-main-left-title p {
+    font-size: 18px;
+  }
+
+  .contact-main-left-titles {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+  }
+
+  .contact-main-left-titles h3 {
+    font-size: 20px;
+    min-width: auto;
+    flex: auto;
+  }
+
+  .breadcrumbs-box {
+    padding: 0 52px;
+  }
+
+  .contact-main-left-box {
+    padding-left: 24px;
+  }
+
+  .contact-main-left-link {
+    font-size: 18px;
+  }
+
+  .contact-main-left-item strong {
+    font-size: 18px;
   }
 }
 
