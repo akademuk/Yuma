@@ -1193,4 +1193,43 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
   }
+
+  // Blog News Page Tabs
+  const newsPage = document.querySelector(".news-page");
+  if (newsPage) {
+    const tabs = newsPage.querySelectorAll(".news__tab");
+    const cards = newsPage.querySelectorAll(".news__card");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        tabs.forEach((t) => t.classList.remove("news__tab--active"));
+        tab.classList.add("news__tab--active");
+
+        const target = tab.getAttribute("data-tab");
+
+        cards.forEach((card) => {
+          const badge = card.querySelector(".news__card-badge");
+          const cardType = badge ? badge.textContent.trim().toLowerCase() : "";
+
+          let shouldShow = false;
+
+          if (target === "all") {
+            shouldShow = true;
+          } else if (target === "news" && cardType === "news") {
+            shouldShow = true;
+          } else if (target === "articles" && cardType === "article") {
+            shouldShow = true;
+          }
+
+          if (shouldShow) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  }
 });
