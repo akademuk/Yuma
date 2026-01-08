@@ -10138,6 +10138,234 @@ select {
   width: 100%;
 }
 
+.academy-hero {
+  padding: 110px 16px 32px 16px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.academy-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.academy-hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) -80.21%, #FFF 94.5%);
+  z-index: 1;
+}
+
+.academy-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 77px;
+}
+
+.academy-hero .wrapper {
+  max-width: 800px;
+  padding: 8px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.academy-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1 0 0;
+  position: relative;
+  z-index: 2;
+}
+
+.breadcrumbs-box2 {
+  padding: 8px 16px;
+}
+
+.breadcrumbs-box2 .breadcrumbs--global {
+  padding: 0;
+}
+
+.academy-hero .wrapper h1 {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.academy-hero .wrapper p {
+  color: var(--colors-graphite-source);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0;
+}
+
+.about--yuma--academy .about--yuma__title-description{
+  display: flex;
+  min-width: 256px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 0 0;
+}
+
+.about--yuma--academy .about--yuma__title-description p {
+  font-size: 24px;
+}
+
+.about--yuma--academy .about--yuma__title-description .btn {
+  gap: 27px;
+}
+
+.about--yuma--academy .about--yuma__body-item {
+  height: 256px;
+  min-width: 256px;
+  padding: 24px;
+}
+
+.about--yuma--academy .about--yuma__body-left {
+  padding: 0;
+}
+
+.academy-advantages h2{
+  color: var(--colors-graphite-source);
+  text-align: center;
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 29px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.academy-news .news__card {
+  width: 256px;
+  height: 546px;
+  flex: 1 0 0;
+}
+
+.academy-news.news-page .news__card-img {
+  height: 176px;
+}
+
+.curses-address{
+  margin: 16px 0 5px 0;
+  overflow: hidden;
+  color: var(--colors-blue-medical-900);
+  font-family: var(--fonts-family-Instrument-Sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 130%; 
+  letter-spacing: 0;
+}
+
+.academy-news.news-page .news__card-title {
+  margin: 16px 0;
+  min-height: 52px;
+}
+
+.academy-news.news-page .wrapper {
+  gap: 32px;
+}
+
+.academy-news.news-page .news__card-content {
+  gap: 0;
+  height: calc(100% - 176px);
+}
+
+.academy-news.news-page .btn {
+  margin-top: auto;
+}
+
+.news-content > .btn {
+  display: none;
+}
+
+.academy-advantages .advantages-swiper{
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.academy-advantages {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.courses-badge-blue {
+  background: var(--colors-blue-medical-source);
+}
+
+.courses-badge-red {
+  background: var(--colors-red-medical-400);
+}
+
+.courses-badge-red::before {
+  background: var(--colors-red-medical-400);
+}
+
+.courses-badge-green {
+  background: var(--colors-base-green01);
+}
+
+.courses-badge-green::before {
+  background: var(--colors-base-green01);
+}
+
+.courses-badge-blues {
+  background: var(--colors-blue-medical-900);
+}
+
+.courses-badge-blues::before {
+  background: var(--colors-blue-medical-900);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (min-width: 768px) {
   .syringe-container {
@@ -13226,6 +13454,110 @@ select {
   .article-page-news {
     padding: 96px 52px 32px 52px;
   }
+
+  .academy-hero-bg img {
+    object-position: center;
+  }
+
+  .academy-hero {
+    padding: 128px 52px 64px 52px;
+  }
+
+  .academy-hero .wrapper {
+    max-width: 1540px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .academy-hero__content {
+    max-width: 762px;
+    width: 100%;
+  }
+
+  .academy-hero .wrapper h1 {
+    font-size: 60px;
+  }
+
+  .academy-hero .wrapper p {
+    font-size: 34px;
+  }
+
+  .academy-hero__content {
+    gap: 10px;
+  }
+
+  .academy-hero {
+    padding-bottom: 78px;
+  }
+
+  .about--yuma--academy {
+    padding: 75px 52px;
+  }
+
+  .about--yuma--academy .about--yuma__title-description p {
+    font-size: 29px;
+  }
+
+  .about--yuma--academy .about--yuma__title-description {
+    gap: 24px;
+  }
+
+  .about--yuma--academy .about--yuma__body-left {
+    padding: 0 16px;
+  }
+
+  .about--yuma--academy .about--yuma__body-item {
+    height: 276px;
+  }
+
+  .academy-advantages {
+    padding: 50px 52px;
+    gap: 32px;
+  }
+
+  .academy-advantages h2 {
+    max-width: 1176px;
+    font-size: 34px;
+  }
+
+  .academy-advantages .advantages-swiper {
+    max-width: 1176px;
+    padding: 16px 0;
+  }
+
+  .academy-news.news-page .wrapper {
+    gap: 64px;
+  }
+
+  .academy-news .news__card {
+    height: 549px;
+  }
+
+  .academy-news .pagination {
+    display: none;
+  }
+
+  .news-content > .btn {
+    display: flex;
+    margin: 8px auto 0 auto !important;
+    min-width: 148px;
+  }
+
+  .academy-news2 h2 br {
+    display: none;
+  }
+
+  .academy-news2 .news__card {
+    height: 397px;
+  }
+
+  .academy-news2 .news__cards-slide {
+     height: 397px;
+  }
+
+  .academy-news2 {
+    padding: 96px 52px 64px 52px;
+  }
 }
 
 @media (max-width: 1279px) {
@@ -13373,11 +13705,11 @@ select {
   }
 }
 
-
+/* 
 .cta {
   display: none !important;
-}
-
+} */
+/* 
 .footer {
   margin-top: 0 !important;
-}
+} */

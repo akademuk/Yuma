@@ -99,9 +99,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Academy News Tabs (Scoped to .academy-news)
+  const academyNews = document.querySelector(".academy-news");
+  if (academyNews) {
+    const tabs = academyNews.querySelectorAll(".news__tab");
+    const cards = academyNews.querySelectorAll(".news__card");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopImmediatePropagation(); // Prevent global script from firing
+
+        // Remove active class from all tabs in this section
+        tabs.forEach((t) => t.classList.remove("news__tab--active"));
+        // Add active class to clicked tab
+        tab.classList.add("news__tab--active");
+
+        const filter = tab.getAttribute("data-tab");
+
+        cards.forEach((card) => {
+          let category = "other";
+          const badge = card.querySelector(".news__card-badge");
+
+          if (badge) {
+            if (badge.classList.contains("courses-badge-blue")) {
+              category = "events";
+            } else if (badge.classList.contains("courses-badge-red")) {
+              category = "seminars";
+            } else if (badge.classList.contains("courses-badge-green")) {
+              category = "webinars";
+            } else if (badge.classList.contains("courses-badge-blues")) {
+              category = "studyTours";
+            }
+          }
+
+          if (filter === "allCourses" || filter === category) {
+            card.style.display = ""; // Reset to default (block/flex)
+             // Optional: Add simple fade in if desired, but display none is requested style
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  }
+
   // News Slider & Tabs
   const newsContainer = document.querySelector(".news__cards");
-  if (newsContainer) {
+  // Only run this logic if it's NOT the academy-news2 slider (which is handled separately below)
+  if (newsContainer && !newsContainer.closest('.academy-news2')) {
     const allSlides = Array.from(newsContainer.querySelectorAll(".swiper-slide"));
     const wrapper = newsContainer.querySelector(".swiper-wrapper");
     const tabs = document.querySelectorAll(".news__tab");
@@ -109,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let newsSwiper;
 
     function initSwiper() {
-      newsSwiper = new Swiper(".news__cards", {
+      newsSwiper = new Swiper(newsContainer, { 
         slidesPerView: 'auto',
         spaceBetween: 24,
         observer: true,
@@ -172,6 +218,36 @@ document.addEventListener("DOMContentLoaded", () => {
         filterSlides(tab.getAttribute("data-tab"));
       });
     });
+  }
+
+  // Academy News 2 Slider (Independent)
+  const academyNews2 = document.querySelector(".academy-news2");
+  if (academyNews2) {
+    const swiperContainer = academyNews2.querySelector(".news__cards");
+    if (swiperContainer) {
+      new Swiper(swiperContainer, {
+        slidesPerView: "auto",
+        spaceBetween: 24,
+        observer: true,
+        observeParents: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        navigation: {
+          nextEl: academyNews2.querySelector(".news__tabs-button-next"),
+          prevEl: academyNews2.querySelector(".news__tabs-button-prev"),
+        },
+        pagination: {
+          el: academyNews2.querySelector(".news__tabs-swiper-pagination"),
+          clickable: true,
+        },
+        breakpoints: {
+          1280: {
+            spaceBetween: 48,
+          },
+        },
+      });
+    }
   }
 
   if (document.querySelector(".advantages-swiper")) {
