@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (swiperContainer) {
       new Swiper(swiperContainer, {
         slidesPerView: "auto",
-        spaceBetween: 24,
+        spaceBetween: 16,
         observer: true,
         observeParents: true,
         mousewheel: {
@@ -1306,6 +1306,48 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       });
+    });
+  }
+
+  // Innovations Slider
+  if (document.querySelector(".innovations__left")) {
+    new Swiper(".innovations__left", {
+      slidesPerView: 'auto',
+      spaceBetween: 16,
+      loop: false,
+      grabCursor: true,
+      mousewheel: {
+        forceToAxis: true,
+      },
+      navigation: {
+        nextEl: ".innovations-sliders-button-next",
+        prevEl: ".innovations-sliders-button-prev",
+      },
+      pagination: {
+        el: ".innovations-sliders-pagination",
+        clickable: true,
+      },
+    });
+  }
+
+  // Speakers Experts Slider
+  if (document.querySelector(".speakers-experts-slider")) {
+    new Swiper(".speakers-experts-slider", {
+      slidesPerView: "auto",
+      spaceBetween: 16,
+      loop: false,
+      grabCursor: true,
+      mousewheel: {
+        forceToAxis: true,
+      },
+      navigation: {
+        nextEl: ".speakers-experts-sliders-button-next",
+        prevEl: ".speakers-experts-sliders-button-prev",
+      },
+      pagination: {
+        el: ".speakers-experts-sliders-pagination",
+        clickable: true,
+      },
     });
   }
 });
