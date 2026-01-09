@@ -11187,6 +11187,16 @@ filter: brightness(0) saturate(100%) invert(99%) sepia(91%) saturate(2%) hue-rot
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: all 0.3s;
+}
+
+.empower-business__item:hover {
+  background: var(--colors-base-white-100);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.10);
+}
+
+.empower-business__item:hover img {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(28%) saturate(6911%) hue-rotate(195deg) brightness(100%) contrast(102%);
 }
 
 .empower-business__item h3 {
