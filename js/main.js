@@ -1351,4 +1351,25 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
   }
+
+  // Footer Submenu Mobile Handler
+  const footerSubmenuItems = document.querySelectorAll('.footer__bottom-nav2-item--has-submenu');
+  if (footerSubmenuItems.length > 0) {
+    footerSubmenuItems.forEach(item => {
+      const link = item.querySelector('.footer__bottom-nav2-link');
+      if (link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          item.classList.toggle('active');
+        });
+      }
+
+      // Close when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!item.contains(e.target)) {
+          item.classList.remove('active');
+        }
+      });
+    });
+  }
 });
