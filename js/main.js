@@ -257,7 +257,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const screenWidth = window.innerWidth;
       const swiperElement = document.querySelector(".advantages-swiper");
       const isPhillex = swiperElement && swiperElement.closest(".advantages-sliders--phillex");
-      const shouldEnable = screenWidth < 1280 || (screenWidth >= 1280 && isPhillex);
+      const isFortox2 = swiperElement && swiperElement.closest(".advantages-sliders--fortox2");
+      const shouldEnable = screenWidth < 1280 || (screenWidth >= 1280 && (isPhillex || isFortox2));
 
       if (shouldEnable && !advantagesSwiper) {
         advantagesSwiper = new Swiper(".advantages-swiper", {
