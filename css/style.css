@@ -3671,6 +3671,7 @@ select {
   background-position: center;
   background-size: cover;
   border-radius: 24px;
+  margin: 0 auto;
 }
 
 .cta__wrapper {
@@ -4553,6 +4554,7 @@ select {
   border-radius: 24px;
   position: relative;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .video-banner__wrapper .video-banner__play {
